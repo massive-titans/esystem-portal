@@ -1,0 +1,92 @@
+<div class="formContainer">
+  <div class="formCreateNew">
+    <% if(typeof alert !== "undefined"){ %>
+    <div class="w3-container w3-orange fullWidth w3-padding-16">
+      <span><%= alert %></span>
+    </div>
+    <% } %>
+    <h5 class="titleFormCreate">Add new course</h5>
+    <form method="post">
+      <fieldset>
+        <legend>General</legend>
+        <div class="inputField">
+          <label for="">Course name</label>
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <input type="text" name="courseName" class="w3-input w3-border" />
+        </div>
+        <div class="inputField">
+          <label for="">Course short name</label>
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <input
+            type="text"
+            name="courseShortName"
+            class="w3-input w3-border"
+          />
+        </div>
+        <div class="inputField">
+          <label for="">Course Category</label>
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <select name="category" id="" class="w3-select w3-border inputwidth">
+            <option disabled selected>Choose your option</option>
+            <% if(typeof categories !== "undefined"){ %> <% for(let i in
+            categories){ %>
+            <option value="<%=categories[i]._id%>">
+              <%=categories[i].categoryName%>
+            </option>
+            <% } %> <% } %>
+          </select>
+        </div>
+        <div class="inputField">
+          <label for="">Course start date</label>
+          <input
+            type="datetime-local"
+            name="startDate"
+            class="w3-input inputwidth"
+          />
+          <div>
+            <input type="checkbox" name="" id="" />
+            <label for="">Enable edit</label>
+          </div>
+        </div>
+        <div class="inputField inputwidth">
+          <label for="">Course End date</label>
+          <input type="datetime-local" name="endDate" class="w3-input" />
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Description</legend>
+        <textarea
+          name="description"
+          cols="30"
+          rows="10"
+          class="w3-input longInput"
+        ></textarea>
+      </fieldset>
+      <fieldset>
+        <legend>Course custom feilds</legend>
+        <label for="">Module credits</label>
+        <input
+          type="number"
+          name="totalCreadit"
+          min="1"
+          max="1000"
+          pattern="[0-9]+"
+          class="w3-input"
+          value="10"
+        />
+      </fieldset>
+      <div class="sectionBottom">
+        <button type="submit" class="w3-button w3-blue" id="btnSaveCourse">
+          Save and Display
+        </button>
+        <button
+          type="reset"
+          class="w3-button w3-gray margin-left-5"
+          id="btnCancelCourse"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

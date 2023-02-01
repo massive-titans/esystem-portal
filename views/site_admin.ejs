@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('include/_header') %>
+  <body>
+    <%- include('include/_bodyHeader') %>
+    <main>
+      <div class="fullWidth fourth-background">
+        <%- include('include/_botContact') %>
+        <section class="width-90vw">
+          <h2 class="margin-bottom-2 text-style-bold">Site administration</h2>
+          <div class="width-100">
+            <div class="container-row-space-between border-top-1-gray">
+              <h3 class="flex-basis-30 text-style-bold">Users</h3>
+              <div class="fullWidth-left margin-vertical-2">
+                <a href="/users/add_user" class="text-decoration">Add User</a
+                ><a href="" class="text-decoration">Browse list of users</a>
+              </div>
+            </div>
+            <div class="container-row-space-between border-top-1-gray">
+              <h3 class="flex-basis-30 text-style-bold">Categories</h3>
+              <div class="fullWidth-left margin-vertical-2">
+                <a href="/api/courses/editCategory" class="text-decoration">Add Category</a
+                ><a href="" class="text-decoration">List Categories</a>
+              </div>
+            </div>
+            <div class="container-row-space-between border-top-1-gray">
+              <h3 class="flex-basis-30 text-style-bold">Courses</h3>
+              <div class="fullWidth-left margin-vertical-2">
+                <a href="" class="text-decoration">Manage courses</a
+                ><a href="" class="text-decoration">Add a new course</a>
+                <a href="" class="text-decoration">Restore course</a>
+              </div>
+            </div>
+            <div class="container-row-space-between border-top-1-gray">
+              <h3 class="flex-basis-30 text-style-bold">Grades</h3>
+              <div class="fullWidth-left margin-vertical-2">
+                <a href="" class="text-decoration">General settings</a>
+                <a href="" class="text-decoration">Grade letters</a>
+              </div>
+            </div>
+            <div class="container-row-space-between border-top-1-gray">
+              <h3 class="flex-basis-30 text-style-bold">Appearance</h3>
+              <div class="fullWidth-left margin-vertical-2">
+                <a href="" class="text-decoration">Default Dashboard page</a
+                ><a href="" class="text-decoration">Default profile page</a>
+                <a href="" class="text-decoration">Manage tags</a>
+                <a href="" class="text-decoration">User tours</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <%- include('include/_footer') %>
+  </body>
+</html>

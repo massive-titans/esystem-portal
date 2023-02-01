@@ -1,0 +1,16 @@
+<div class="w3-border padding-2">
+  <div>
+    <h2>Confirm</h2>
+  </div>
+  <div class="w3-margin-bottom">
+    <p>
+      You are already logged in as
+      <span class="w3-text-red"
+        ><%=userInfos.firstname.toUpperCase()%>&nbsp;<%=userInfos.lastname.toUpperCase()%></span
+      >. you need to log out before logging in as different user.
+    </p>
+  </div>
+  <div class="float-right">
+    <a href="/auth/logout" class="w3-button w3-green">Log Out</a>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('include/_header') %>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+    integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <body>
+    <%- include('include/_bodyHeader') %>
+    <main>
+      <div class="btnBack">
+        <a
+          href="/api/courses/my_courses"
+          class="w3-button w3-white w3-border w3-border-blue w3-round-large padding-0_2-0_5"
+          >&lt;Back</a
+        >
+      </div>
+      <div class="fullWidth">
+        <%- include('include/_botContact') %>
+        <div class="width-100 padding-1">
+          <% if(typeof course !== "undefined") {%>
+          <div class="titleCourse">
+            <h3 class="font-bold-600"><%=course.courseName%></h3>
+          </div>
+          <%}%>
+          <div class="fullWidth">
+            <%-include('include/_singleSessionRecord') %>
+          </div>
+        </div>
+      </div>
+    </main>
+    <%- include('include/_footer') %>
+  </body>
+</html>

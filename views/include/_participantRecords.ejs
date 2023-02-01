@@ -1,0 +1,21 @@
+<% if(typeof course !== "undefined") {%> <% for(let student of
+course.student){%>
+<tr>
+  <td>
+    <input type="checkbox" name="" id="" class="w3-centered" value="2" />
+  </td>
+  <td>
+    <a href="/api/course?sysId=<%=course._id%>" class="courseDisplay"
+      ><%=student.firstName%>&nbsp;<%=student.lastName%></a
+    ><input type="hidden" name="" value="<%=course._id%>" />
+  </td>
+  <td><%=student.accountLogin.email%></td>
+  <td>--none--</td>
+  <td>
+    <div class="w3-centered">
+      <a href="" class="w3-button w3-green"><i class="fa-solid fa-eye"></i></a>
+      <a href="" class="w3-button w3-red"><i class="fa-solid fa-trash"></i></a>
+    </div>
+  </td>
+</tr>
+<%}%> <%}%>

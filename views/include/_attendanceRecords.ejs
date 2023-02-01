@@ -1,0 +1,79 @@
+<section class="width-90vw">
+  <!-- this is the section for courses -->
+  <div>
+    <div class="w3-margin-bottom">
+      <button
+        class="w3-button w3-green w3-hover-light-blue w3-round-large"
+        id="enrollStudents"
+      >
+        Add more session
+      </button>
+    </div>
+    <div class="w3-responsive">
+      <table class="w3-table-all w3-striped" id="myCoursesTable">
+        <thead>
+          <tr>
+            <th class="width-5"></th>
+            <th class="width-5">No.</th>
+            <th class="width-15">Date</th>
+            <th class="width-15">Time</th>
+            <th class="width-20">Type</th>
+            <th>Description</th>
+            <th class="width-20">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if(typeof course.hasAttendance !== "undefined"){%> <%for(let
+          sessions of course.hasAttendance.sessions){%> <%for(let session of
+          sessions.sessionRefs.sessions){%>
+          <tr>
+            <td class="width-5"><input type="checkbox" name="" id="" /></td>
+            <td class="width-5">
+              <%=sessions.sessionRefs.sessions.indexOf(session)+1%>
+            </td>
+            <td>
+              <%=session.date.toLocaleDateString('en-GB')%>(<%=session.date.toLocaleDateString('en-GB',
+              { weekday: 'short'})%>)
+            </td>
+            <td><%=sessions.startTime%>-<%=sessions.endTime%></td>
+            <td><%=sessions.attendanceType%></td>
+            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
+            <td class="width-30">
+              <div>
+                <a
+                  href="/api/course/session_check?sysId=<%=course._id%>&sessionId=<%=session._id%>"
+                  class="w3-bar-item w3-button padding-0_2-0_4 text-color-green"
+                  ><i class="fa-solid fa-eye"></i
+                ></a>
+                <a href="" class="w3-bar-item w3-button padding-0_2-0_4"
+                  ><i class="fa-solid fa-pen-to-square"></i
+                ></a>
+                <a
+                  class="w3-bar-item w3-button courseDelete padding-0_2-0_4 text-color-red"
+                  data-id=""
+                  ><i class="fa-solid fa-trash"></i
+                ></a>
+              </div>
+            </td>
+          </tr>
+          <%}%><%}%><%}%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="container-row-space-between margin-vertical-2">
+    <div>
+      <label for="">Sorting</label>
+      <select name="" id="" class="padding-0_7-1 width-20">
+        <option selected disabled>--select sort--</option>
+        <option value="1">sort ascending a-z</option>
+        <option value="2">sort descending z-a</option>
+      </select>
+    </div>
+    <div>
+      <button class="w3-button w3-red" disabled id="btnDeleteCategories">
+        Delete
+      </button>
+    </div>
+  </div>
+</section>

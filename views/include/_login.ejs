@@ -1,0 +1,47 @@
+<div class="formContainer">
+  <% if(typeof alert !== "undefined"){ %>
+  <div class="w3-container w3-orange fullWidth w3-padding-16">
+    <span><%= alert %></span>
+  </div>
+  <% } %>
+  <form method="post" class="form w3-container" id="formLogin">
+    <div class="w3-container w3-green">
+      <h2>Login</h2>
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input
+        class="w3-input w3-border w3-sand"
+        type="text"
+        placeholder="Email"
+        autocomplete="off"
+        required
+        name="email"
+      />
+    </div>
+    <div>
+      <label for="passwordLogin">Password</label>
+      <input
+        class="w3-input w3-border w3-sand"
+        type="password"
+        id="passwordLogin"
+        placeholder="Password"
+        minlength="8"
+        maxlength="50"
+        autocomplete="off"
+        required
+        name="password"
+      />
+    </div>
+    <div>
+      <input type="checkbox" name="" id="rememberPassword" />
+      <label class="label-inline" for="rememberPassword"> Remember me </label>
+    </div>
+    <button type="submit" id="buttonLoginSubmit" class="w3-button w3-blue">
+      Login
+    </button>
+  </form>
+  <div class="forgetPassword margin-bottom-2">
+    <a href="">Forget your Username or Password?</a>
+  </div>
+</div>

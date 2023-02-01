@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('include/_header') %>
+  <body>
+    <%- include('include/_bodyHeader') %>
+    <main>
+      <div class="btnBack">
+        <a
+          href="/api/courses/my_courses"
+          class="w3-button w3-white w3-border w3-border-blue w3-round-large"
+          >&lt;Back</a
+        >
+      </div>
+      <div class="width-100 padding-1">
+        <% if(typeof course !== "undefined") {%>
+        <div class="titleCourse">
+          <h3 class="font-bold-600"><%=course.courseName%></h3>
+        </div>
+        <div class="w3-bar w3-border-bottom w3-border-top">
+          <a href="" class="w3-bar-item w3-button activated">Course</a
+          ><a
+            href="/api/course/participants?sysId=<%=course._id%>"
+            class="w3-bar-item w3-button"
+            >Participants</a
+          ><a
+            href="/api/course/attendance?sysId=<%=course._id%>"
+            class="w3-bar-item w3-button"
+            >Attendance</a
+          ><a href="" class="w3-bar-item w3-button">Grade</a
+          ><a href="" class="w3-bar-item w3-button">Reports</a>
+          <a href="" class="w3-bar-item w3-button">Setting</a>
+        </div>
+        <%}%>
+        <div>
+          <section class="w3-margin-top w3-border-bottom">
+            <div class="linkDivButton">
+              <a href="" class="w3-button w3-circle"
+                ><i class="fa-solid fa-caret-right"></i>
+              </a>
+              <h5>General</h5>
+            </div>
+            <div class="width-100">
+              <figure class="contentImage">
+                <img
+                  src="/img/pexels-mike-b-170811.jpg"
+                  alt="mercedes benz blue color"
+                />
+                <img
+                  src="/img/pexels-mike-b-244206.jpg"
+                  alt="mercedes benz blue color"
+                />
+              </figure>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint
+                necessitatibus, similique unde fugiat obcaecati saepe quibusdam
+                corporis! Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Exercitationem id eveniet voluptatum similique tempore
+                qui? Distinctio fugiat fuga quaerat corrupti. Incidunt dolorum,
+                ducimus non est similique optio ex vel excepturi repellat
+                necessitatibus quaerat!
+              </p>
+            </div>
+          </section>
+          <section class="w3-margin-top w3-border-bottom">
+            <div class="linkDivButton">
+              <a href="" class="w3-button w3-circle"
+                ><i class="fa-solid fa-caret-right"></i>
+              </a>
+              <h5>Useful resources</h5>
+            </div>
+            <div class="width-100">
+              <figure class="contentImage">
+                <img
+                  src="/img/pexels-mike-b-170811.jpg"
+                  alt="mercedes benz blue color"
+                />
+                <img
+                  src="/img/pexels-mike-b-120049.jpg"
+                  alt="mercedes benz blue color"
+                />
+              </figure>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint
+                necessitatibus, similique unde fugiat obcaecati saepe quibusdam
+                corporis! Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Exercitationem id eveniet voluptatum similique tempore
+                qui? Distinctio fugiat fuga quaerat corrupti. Incidunt dolorum,
+                ducimus non est similique optio ex vel excepturi repellat
+                necessitatibus quaerat!
+              </p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+    <%- include('include/_footer') %>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+<div class="formContainer">
+  <div class="formCreateNew">
+    <% if(typeof alert !== "undefined"){ %>
+    <div class="w3-container w3-orange fullWidth w3-padding-16">
+      <span><%= alert %></span>
+    </div>
+    <% } %>
+    <h5 class="titleFormCreate">Add new user</h5>
+    <form action="/users/add_user" method="post">
+      <fieldset>
+        <legend>User details</legend>
+        <div class="inputField">
+          <label for="userFirstname">Firstname</label>
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <input
+            id="userFirstname"
+            type="text"
+            name="firstName"
+            class="w3-input w3-border"
+            placeholder="Firstname"
+            autocomplete="off"
+          />
+        </div>
+        <div class="inputField">
+          <label for="userLastname">Lastname</label>
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <input
+            id="userLastname"
+            type="text"
+            name="lastName"
+            class="w3-input w3-border"
+            placeholder="Lastname"
+            autocomplete="off"
+          />
+        </div>
+        <div class="inputField inputwidth-20">
+          <label for="">Date of birth</label>
+          <input
+            type="date"
+            name="birthdate"
+            id="userBirthdate"
+            class="w3-input"
+          />
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Login details</legend>
+        <div class="inputField">
+          <label for="userEmail">Email</label>
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <input
+            id="userEmail"
+            type="text"
+            name="email"
+            class="w3-input w3-border"
+            placeholder="Email"
+            autocomplete="off"
+          />
+        </div>
+        <div class="inputField">
+          <label for="userPassword">Password</label>
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <input
+            id="userPassword"
+            type="password"
+            name="password"
+            class="w3-input w3-border"
+            placeholder="Password"
+            autocomplete="off"
+          />
+        </div>
+        <div class="inputField">
+          <label for="">Account type:</label>
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <select
+            name="accountType"
+            id=""
+            class="w3-select w3-border inputwidth-20"
+          >
+            <option value="student" selected>Student</option>
+            <option value="teacher">Teacher</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+      </fieldset>
+      <div class="sectionBottom">
+        <button type="submit" class="w3-button w3-blue" id="btnSaveCourse">
+          Save
+        </button>
+        <button
+          type="reset"
+          class="w3-button w3-gray margin-left-5"
+          id="btnCancelCourse"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

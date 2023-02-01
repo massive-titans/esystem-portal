@@ -1,0 +1,45 @@
+<% if(typeof courses !== "undefined") {%> <% for(let course of courses) {%>
+<tr>
+  <td>
+    <input type="checkbox" name="" id="" class="w3-centered" value="2" />
+  </td>
+  <td>
+    <a href="/api/course?sysId=<%=course._id%>" class="courseDisplay"
+      ><%=course.courseName%></a
+    ><input type="hidden" name="" value="<%=course._id%>" />
+  </td>
+  <td><%=course.category.categoryName%></td>
+  <td>
+    <span><%=course.startDate.toLocaleDateString()%></span
+    >&nbsp;&#150;&nbsp;<span><%=course.endDate.toLocaleDateString()%></span>
+  </td>
+  <td><%=course.creatorName%></td>
+  <td class="w3-right-align">
+    <div class="w3-dropdown-hover">
+      <button class="w3-button w3-blue w3-border w3-border-blue">
+        <i class="fa-solid fa-gear"></i>
+      </button>
+      <div class="w3-dropdown-content w3-bar-block w3-pale-green w3-card">
+        <div class="catMoreBlock">
+          <a href="" class="w3-button display-block"
+            ><i class="fa-solid fa-clipboard"></i>&nbsp;Copy</a
+          >
+          <a href="" class="w3-button display-block"
+            ><i class="fa-solid fa-pen-to-square"></i>&nbsp;Edit</a
+          >
+          <a
+            class="w3-button courseDelete display-block"
+            data-id="<%=course._id%>"
+            ><i class="fa-solid fa-trash"></i>&nbsp;Delete</a
+          >
+        </div>
+      </div>
+    </div>
+  </td>
+  <td class="w3-right-align">
+    <span><%=course.student.length%></span>&nbsp;<i
+      class="fa-solid fa-user"
+    ></i>
+  </td>
+</tr>
+<%}%> <%}%>

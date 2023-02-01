@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('include/_header') %>
+  <body>
+    <%- include('include/_bodyHeader') %>
+    <main>
+      <div class="btnBack">
+        <a
+          href="/api/courses/my_courses"
+          class="w3-button w3-white w3-border w3-border-blue w3-round-large"
+          >&lt;Back</a
+        >
+      </div>
+      <div class="width-100 padding-1">
+        <% if(typeof course !== "undefined") {%>
+        <div class="titleCourse">
+          <h3 class="font-bold-600"><%=course.courseName%></h3>
+        </div>
+        <div class="w3-bar w3-border-bottom w3-border-top margin-bottom-2">
+          <a
+            href="/api/course?sysId=<%=course._id%>"
+            class="w3-bar-item w3-button"
+            >Course</a
+          ><a
+            href="/api/course/participants?sysId=<%=course._id%>"
+            class="w3-bar-item w3-button activated"
+            >Participants</a
+          ><a
+            href="/api/course/attendance?sysId=<%=course._id%>"
+            class="w3-bar-item w3-button"
+            >Attendance</a
+          ><a href="" class="w3-bar-item w3-button">Grade</a
+          ><a href="" class="w3-bar-item w3-button">Reports</a>
+          <a href="" class="w3-bar-item w3-button">Setting</a>
+        </div>
+        <%}%>
+        <div class="fullWidth">
+          <%- include('include/_botContact') %>
+          <section class="width-90vw">
+            <!-- this is the section for courses -->
+            <div>
+              <div class="w3-margin-bottom">
+                <button
+                  class="w3-button w3-blue w3-hover-light-blue w3-round-large"
+                  id="enrollStudents"
+                >
+                  Enrol users
+                </button>
+              </div>
+              <div>
+                <table class="w3-table-all" id="myCoursesTable">
+                  <thead>
+                    <tr class="w3-light-grey">
+                      <th></th>
+                      <th>First name/Surname</th>
+                      <th>Email address</th>
+                      <th>Last Login</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <%- include('include/_participantRecords') %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="container-row-space-between margin-vertical-2">
+              <div>
+                <label for="">Sorting</label>
+                <select name="" id="" class="padding-0_7-1 width-20">
+                  <option selected disabled>--select sort--</option>
+                  <option value="1">sort ascending a-z</option>
+                  <option value="2">sort descending z-a</option>
+                </select>
+              </div>
+              <div>
+                <button
+                  class="w3-button w3-red"
+                  disabled
+                  id="btnDeleteCategories"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+    <%- include('include/_footer') %>
+  </body>
+</html>

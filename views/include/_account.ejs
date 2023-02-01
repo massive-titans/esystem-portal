@@ -1,0 +1,18 @@
+<% if(typeof userInfos !== "undefined") {%>
+<div class="w3-dropdown-hover">
+  <a class="w3-button w3-blue" id="profileShow">
+    <span><%=userInfos.role.toUpperCase()%></span>
+    <span class="short-name"
+      ><%=userInfos.firstname.charAt(0).toUpperCase()%><%=userInfos.lastname.charAt(0).toUpperCase()%></span
+    >
+    <i class="fa-solid fa-chevron-down"></i>
+  </a>
+  <div class="w3-dropdown-content w3-bar-block w3-pale-green w3-card width-18">
+    <a href="" class="w3-bar-item w3-button w3-mobile">Profile</a>
+    <a href="" class="w3-bar-item w3-button w3-mobile">Switch role</a>
+    <a href="/auth" class="w3-bar-item w3-button w3-mobile">Log out</a>
+  </div>
+</div>
+<% } else{%>
+<a href="/auth" class="w3-button w3-blue">Login</a>
+<% } %>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('include/_header') %>
+  <body>
+    <%- include('include/_bodyHeader') %>
+    <main>
+      <div class="btnBack">
+        <a
+          href="/api/courses/my_courses"
+          class="w3-button w3-white w3-border w3-border-blue w3-round-large padding-0_2-0_5"
+          >&lt;Back</a
+        >
+      </div>
+      <div class="fullWidth">
+        <%- include('include/_botContact') %>
+        <div class="width-100 padding-1">
+          <% if(typeof course !== "undefined") {%>
+          <div class="titleCourse">
+            <h3 class="font-bold-600"><%=course.courseName%></h3>
+          </div>
+          <div class="w3-bar w3-border-bottom w3-border-top margin-bottom-1">
+            <a
+              href="/api/course?sysId=<%=course._id%>"
+              class="w3-bar-item w3-button"
+              >Course</a
+            ><a
+              href="/api/course/participants?sysId=<%=course._id%>"
+              class="w3-bar-item w3-button"
+              >Participants</a
+            ><a
+              href="/api/course/attendance?sysId=<%=course._id%>"
+              class="w3-bar-item w3-button activated"
+              >Attendance</a
+            ><a href="" class="w3-bar-item w3-button">Grade</a
+            ><a href="" class="w3-bar-item w3-button">Reports</a>
+            <a href="" class="w3-bar-item w3-button">Setting</a>
+          </div>
+          <%}%>
+          <div class="fullWidth">
+            <% if(typeof course.hasAttendance !== "undefined"){%>
+            <%-include('include/_attendanceRecords') %> <%}else{%>
+            <%-include('include/_newAttendance') %><%}%>
+          </div>
+        </div>
+      </div>
+    </main>
+    <%- include('include/_footer') %>
+  </body>
+</html>

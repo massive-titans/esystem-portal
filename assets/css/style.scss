@@ -1,0 +1,620 @@
+@import "./_includeStyle/_variable";
+@import "./_includeStyle/_mixin";
+
+//Custom include framework
+.margin-right-3 {
+  margin-right: 3rem;
+}
+.margin-right-4 {
+  margin-right: 4rem;
+}
+
+.margin-left-5 {
+  margin-left: 5rem;
+}
+
+.margin-left-3 {
+  margin-left: 3rem;
+}
+
+.margin-left-2 {
+  margin-left: 2rem;
+}
+
+.margin-left-1 {
+  margin-left: 1rem;
+}
+
+.margin-left-0_5 {
+  margin-left: 0.5rem;
+}
+
+.margin-bottom-2 {
+  margin-bottom: 2rem;
+}
+
+.margin-bottom-1 {
+  margin-bottom: 1rem;
+}
+
+.margin-top-1 {
+  margin-top: 1rem;
+}
+
+.margin-horizontal-5 {
+  margin: 0 5rem;
+}
+
+.margin-horizontal-3 {
+  margin: 0 3rem;
+}
+
+.margin-horizontal-1 {
+  margin: 0 1rem;
+}
+
+.margin-vertical-2 {
+  margin: 2rem 0;
+}
+
+.margin-vertical-1 {
+  margin: 1rem 0;
+}
+
+.padding-2 {
+  padding: 2rem;
+}
+
+.padding-1 {
+  padding: 1rem;
+}
+
+.padding-0_5 {
+  padding: 0.5rem;
+}
+
+.padding-0_2-0_5 {
+  padding: 0.2rem 0.5rem;
+}
+
+.padding-0_2-0_4 {
+  padding: 0.2rem 0.4rem;
+}
+
+.padding-0_2-0_5 {
+  padding: 0.2rem 0.5rem;
+}
+
+.padding-0_7-1 {
+  padding: 0.7rem 1rem;
+}
+
+.width-18 {
+  width: 18rem;
+}
+
+.width-20 {
+  width: 20rem;
+}
+
+.width-10 {
+  width: 10rem;
+}
+
+.width-15 {
+  width: 15rem;
+}
+
+.width-30 {
+  width: 30rem;
+}
+
+.width-90vw {
+  width: 90vw;
+}
+
+.width-90 {
+  width: 90%;
+}
+.width-5 {
+  width: 5rem;
+}
+
+.height-3 {
+  height: 3rem;
+}
+
+.height-40 {
+  height: 40rem;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.float-right {
+  float: right;
+}
+
+.text-decoration:hover {
+  text-decoration: underline;
+}
+
+.fourth-background {
+  background: $fourthdaryBackgroundDefault;
+  background: $fourthdaryBackgroundDefault;
+}
+
+.border-bottom-1-gray {
+  border-bottom: 1px solid gray;
+}
+
+.border-top-1-gray {
+  border-top: 1px solid gray;
+}
+
+.border-vertical-1-gray {
+  border-bottom: 1px solid gray;
+  border-top: 1px solid gray;
+}
+
+.border-1-gray {
+  border: 1px solid gray;
+}
+
+.text-style-bold {
+  font-weight: 600;
+}
+
+.container-row-space-between {
+  @include container(row, space-between);
+}
+
+.container-row-center {
+  @include container(row, center);
+}
+.container-row-flex-start {
+  @include container(row, flex-start);
+}
+
+.container-row-flex-end {
+  @include container(row, flex-end);
+}
+
+.container-column-center {
+  @include container(column, center);
+}
+
+.container-row-center-flex-start {
+  @include container-alignItems(row, center, flex-start);
+}
+
+.container-column-flex-start {
+  @include container(column, flex-start);
+}
+
+.flex-basis-30 {
+  flex-basis: 30rem;
+}
+
+.custom-button {
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 0.2rem;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.display-block {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+//End custom include framework
+
+// Start general selector properties
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: $fontSize;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: black;
+  min-width: 90rem;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
+figure {
+  margin: 0;
+}
+
+input[type="radio"] {
+  cursor: pointer;
+}
+
+option:nth-child(2n) {
+  background-color: lightgray;
+}
+
+// End general selector properties
+
+// Class selector
+.nav-bar {
+  @include container(row, space-between);
+  height: $nav-barHeight;
+  background: $primaryBackground;
+  width: 100vw;
+  padding: 0 1rem;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo-nav {
+  @include container(row, center);
+  height: $nav-barHeight;
+  figure,
+  img {
+    height: $logo-imgHeight;
+  }
+  div {
+    @include container(row, center);
+    height: $nav-barHeight;
+  }
+}
+
+.web-title {
+  @include titleStyle($nav-barHeight, $secondaryColor);
+}
+
+.fullWidth {
+  @include container(column, center);
+  width: 100%;
+}
+.fullWidth-left {
+  @include container-alignItems(column, center, flex-start);
+  width: 100%;
+}
+.form {
+  @include container(column, center);
+  padding: 2rem;
+  width: 100%;
+  div {
+    width: 50%;
+    margin-bottom: 3rem;
+  }
+}
+
+#profileShow {
+  @include container(row, center);
+}
+
+.short-name {
+  color: black;
+  margin: 0 1rem;
+  border-radius: 1.2rem;
+  background-color: greenyellow;
+  padding: 0.3rem;
+}
+
+// class for javascript toggle
+.activated {
+  background-color: $thirdary;
+  color: $primaryColor;
+}
+
+// index main start
+// to be edited for bot
+.quick-bot {
+  z-index: 100;
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  & > div {
+    position: relative;
+    .showBot {
+      display: none;
+    }
+  }
+}
+
+#bot-Contact {
+  cursor: pointer;
+  font-size: 1.8rem;
+  border-radius: 5rem;
+  color: white;
+  outline: none;
+}
+
+.it-contact {
+  @include container-alignItems(column, center, flex-start);
+  position: absolute;
+  bottom: 4.4rem;
+  right: 0;
+  background-color: lightseagreen;
+  border-radius: 1rem;
+  color: white;
+  a,
+  span {
+    color: yellow;
+  }
+  & > a {
+    text-align: center;
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+    width: $chatBotWidth;
+    border-bottom: 0.1rem solid white;
+  }
+  div {
+    @include container-alignItems(column, center, flex-start);
+    width: $chatBotWidth;
+    p {
+      padding: 1rem 2rem;
+      font-size: 1.4rem;
+    }
+  }
+}
+
+// end to be edited for bot
+
+.start-section {
+  @include container(row, center);
+}
+.color-overlay {
+  @include opacityBackground(0.4, black);
+}
+
+.start-section > div {
+  @include backgroundImage("../img/university.jpg");
+  width: 60vw;
+  height: 30rem;
+  position: relative;
+  margin-bottom: 1rem;
+}
+.welcome-text {
+  background: $thirdaryBackgroundDefault;
+  background: $thirdaryBackground;
+  padding: 1rem;
+  width: 70%;
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  border-radius: 1rem;
+  color: $primaryColor;
+  z-index: 99;
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  p {
+    font-size: 1.5rem;
+  }
+}
+
+.panel-block {
+  @include container(column, flex-start);
+  & > div:first-child {
+    @include container-alignItems(row, space-around, flex-start);
+    flex-wrap: wrap;
+    width: 60vw;
+  }
+}
+.block-element {
+  width: 45%;
+  padding: 1.5rem;
+  h3 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    color: $secondaryColor;
+    font-weight: 600;
+  }
+  p {
+    font-size: 1.6rem;
+    font-weight: 450;
+    margin-bottom: 2rem;
+  }
+  a {
+    display: block;
+    float: right;
+  }
+}
+// index main end
+
+// start footer
+.footer-status {
+  @include container(row, center);
+  background: $secondaryBackgroud;
+  height: 5rem;
+  span,
+  a {
+    font-size: 1.4rem;
+  }
+}
+// end footer
+
+//start login page
+.btnBack {
+  @include container(row, flex-start);
+  padding-top: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.web-title-login {
+  @include titleStyle(0rem, $secondaryColor);
+}
+
+.formContainer {
+  @include container-alignItems(column, center, flex-start);
+  width: $widthParentForm_1st;
+  margin-bottom: 2rem;
+  background: $fourthdaryBackgroundDefault;
+  background: $fourthdaryBackgroundDefault;
+}
+
+.titleFormCreate {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.uiMessage {
+  display: none;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  span {
+    color: $primaryColor;
+  }
+}
+
+.forgetPassword {
+  margin-left: 5rem;
+  color: rgb(45, 121, 1);
+}
+//end login page
+
+//Start create new course
+.formCreateNew {
+  width: 100%;
+  padding: 1rem 2rem;
+  fieldset {
+    margin-bottom: 1rem;
+    border-radius: 2rem;
+    border: 2px solid black;
+    legend {
+      font-size: 1.8rem;
+    }
+  }
+}
+
+.titleFormCreate {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.font-bold-600 {
+  font-weight: 600;
+}
+
+.inputField {
+  margin-bottom: 2rem;
+  i {
+    color: $primaryIconColor;
+  }
+}
+
+.longInput {
+  resize: vertical;
+  width: 45rem;
+}
+
+.inputwidth-30 {
+  width: 30rem;
+}
+
+.inputwidth-20 {
+  width: 20rem;
+}
+.inputwidth-10 {
+  width: 10rem;
+}
+.sectionBottom {
+  float: right;
+  margin: 2rem 2rem;
+}
+
+.text-color-blue {
+  color: blue;
+}
+
+.text-color-green {
+  color: rgb(0, 171, 0);
+}
+
+.text-color-red {
+  color: red;
+}
+
+//End create new course
+
+// Start create new category
+
+// End create new category
+
+// Start 404 not found
+.notFound-404 {
+  @include container-alignItems(column, center, center);
+  color: gray;
+  h4 {
+    font-size: 8rem;
+  }
+  p {
+    font-size: 4rem;
+  }
+}
+// End 404 not found
+
+// Start universal class
+
+// End universal class
+
+// Start my courses display
+.input-button-search {
+  @include container(row, center);
+  button {
+    padding: 0.65rem 2rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 0.2rem;
+  }
+  input {
+    padding: 0.5rem 1rem;
+    width: 30rem;
+  }
+}
+
+.w3-table-all td {
+  vertical-align: middle;
+}
+
+#btnMoveCourses {
+  padding: 0.65rem 2rem;
+}
+// End my courses display
+
+// Start Display Course
+.contentImage img {
+  width: 30rem;
+  height: 18rem;
+}
+// End Display Course
+
+// Start attendance
+.attendanceRadio{
+  width: 1.6rem;
+  height: 1.6rem;
+  margin: 0 4px;
+}
+
+.link{
+  text-decoration: underline;
+  color: rgb(0, 123, 200);
+}
+// End attendance

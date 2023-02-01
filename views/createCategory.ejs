@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('include/_header') %>
+  <body>
+    <%- include('include/_bodyHeader') %>
+    <main>
+      <div class="fullWidth">
+        <%- include('include/_botContact') %>
+
+        <!-- create or edit new category form -->
+        <div class="formContainer">
+          <div class="formCreateNew">
+            <% if(typeof alert !== "undefined"){ %>
+            <div class="w3-container w3-orange fullWidth w3-padding-16">
+              <span><%= alert %></span>
+            </div>
+            <% } %>
+            <h5 class="titleFormCreate">Add new category</h5>
+            <form method="post">
+              <div class="inputField">
+                <label for="categoryName">Category name</label>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <input
+                  type="text"
+                  name="categoryName"
+                  class="w3-input w3-border"
+                />
+              </div>
+              <div class="inputField">
+                <label for="categoryShortName">Category Short Name</label>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <input
+                  type="text"
+                  name="categoryShortName"
+                  class="w3-input w3-border"
+                />
+              </div>
+              <div class="inputField">
+                <label for="">Description</label>
+                <textarea
+                  name="description"
+                  id=""
+                  cols="30"
+                  rows="10"
+                  class="w3-input longInput"
+                ></textarea>
+              </div>
+              <div class="sectionBottom">
+                <button
+                  type="submit"
+                  class="w3-button w3-blue"
+                  id="btnSaveCategory"
+                >
+                  Create Category
+                </button>
+                <button
+                  type="reset"
+                  class="w3-button w3-gray"
+                  id="btnCancelCategory"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <%- include('include/_footer') %>
+  </body>
+</html>

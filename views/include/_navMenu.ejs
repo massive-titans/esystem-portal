@@ -1,0 +1,11 @@
+<% if(typeof userInfos !== "undefined" ){ %> <% if(userInfos.role ===
+"admin"){%> <% for(let key in navMenu) {%>
+<a href="<%=navMenu[key].link%>" class="w3-bar-item w3-button"
+  ><%=navMenu[key].content%></a
+>
+<% } %> <%} else{%> <% for(let key in navMenu) {%> <% if(key !== "siteAdmin")
+{%>
+<a href="<%=navMenu[key].link%>" class="w3-bar-item w3-button"
+  ><%=navMenu[key].content%></a
+>
+<% } %> <% } %> <% } %> <% } %>

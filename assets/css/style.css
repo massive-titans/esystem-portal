@@ -1,0 +1,687 @@
+.margin-right-3 {
+  margin-right: 3rem;
+}
+
+.margin-right-4 {
+  margin-right: 4rem;
+}
+
+.margin-left-5 {
+  margin-left: 5rem;
+}
+
+.margin-left-3 {
+  margin-left: 3rem;
+}
+
+.margin-left-2 {
+  margin-left: 2rem;
+}
+
+.margin-left-1 {
+  margin-left: 1rem;
+}
+
+.margin-left-0_5 {
+  margin-left: 0.5rem;
+}
+
+.margin-bottom-2 {
+  margin-bottom: 2rem;
+}
+
+.margin-bottom-1 {
+  margin-bottom: 1rem;
+}
+
+.margin-top-1 {
+  margin-top: 1rem;
+}
+
+.margin-horizontal-5 {
+  margin: 0 5rem;
+}
+
+.margin-horizontal-3 {
+  margin: 0 3rem;
+}
+
+.margin-horizontal-1 {
+  margin: 0 1rem;
+}
+
+.margin-vertical-2 {
+  margin: 2rem 0;
+}
+
+.margin-vertical-1 {
+  margin: 1rem 0;
+}
+
+.padding-2 {
+  padding: 2rem;
+}
+
+.padding-1 {
+  padding: 1rem;
+}
+
+.padding-0_5 {
+  padding: 0.5rem;
+}
+
+.padding-0_2-0_5 {
+  padding: 0.2rem 0.5rem;
+}
+
+.padding-0_2-0_4 {
+  padding: 0.2rem 0.4rem;
+}
+
+.padding-0_2-0_5 {
+  padding: 0.2rem 0.5rem;
+}
+
+.padding-0_7-1 {
+  padding: 0.7rem 1rem;
+}
+
+.width-18 {
+  width: 18rem;
+}
+
+.width-20 {
+  width: 20rem;
+}
+
+.width-10 {
+  width: 10rem;
+}
+
+.width-15 {
+  width: 15rem;
+}
+
+.width-30 {
+  width: 30rem;
+}
+
+.width-90vw {
+  width: 90vw;
+}
+
+.width-90 {
+  width: 90%;
+}
+
+.width-5 {
+  width: 5rem;
+}
+
+.height-3 {
+  height: 3rem;
+}
+
+.height-40 {
+  height: 40rem;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.float-right {
+  float: right;
+}
+
+.text-decoration:hover {
+  text-decoration: underline;
+}
+
+.fourth-background {
+  background: radial-gradient(circle, rgb(245, 247, 220) 0%, rgb(200, 253, 255) 100%);
+  background: radial-gradient(circle, rgb(245, 247, 220) 0%, rgb(200, 253, 255) 100%);
+}
+
+.border-bottom-1-gray {
+  border-bottom: 1px solid gray;
+}
+
+.border-top-1-gray {
+  border-top: 1px solid gray;
+}
+
+.border-vertical-1-gray {
+  border-bottom: 1px solid gray;
+  border-top: 1px solid gray;
+}
+
+.border-1-gray {
+  border: 1px solid gray;
+}
+
+.text-style-bold {
+  font-weight: 600;
+}
+
+.container-row-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.container-row-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.container-row-flex-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+}
+
+.container-row-flex-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+}
+
+.container-column-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container-row-center-flex-start {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: row;
+}
+
+.container-column-flex-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.flex-basis-30 {
+  flex-basis: 30rem;
+}
+
+.custom-button {
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 0.2rem;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.display-block {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: black;
+  min-width: 90rem;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
+figure {
+  margin: 0;
+}
+
+input[type=radio] {
+  cursor: pointer;
+}
+
+option:nth-child(2n) {
+  background-color: lightgray;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  height: 6rem;
+  background: radial-gradient(circle, rgb(238, 174, 202) 0%, rgb(148, 187, 233) 100%);
+  width: 100vw;
+  padding: 0 1rem;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 6rem;
+}
+.logo-nav figure,
+.logo-nav img {
+  height: 5rem;
+}
+.logo-nav div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 6rem;
+}
+
+.web-title {
+  margin: 6.5rem 0.5rem 0.5rem;
+  border: 0.1rem solid gray;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.6rem;
+}
+.web-title h1 {
+  color: lightcoral;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.fullWidth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.fullWidth-left {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+  width: 100%;
+}
+.form div {
+  width: 50%;
+  margin-bottom: 3rem;
+}
+
+#profileShow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.short-name {
+  color: black;
+  margin: 0 1rem;
+  border-radius: 1.2rem;
+  background-color: greenyellow;
+  padding: 0.3rem;
+}
+
+.activated {
+  background-color: rgb(213, 52, 235);
+  color: white;
+}
+
+.quick-bot {
+  z-index: 100;
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+}
+.quick-bot > div {
+  position: relative;
+}
+.quick-bot > div .showBot {
+  display: none;
+}
+
+#bot-Contact {
+  cursor: pointer;
+  font-size: 1.8rem;
+  border-radius: 5rem;
+  color: white;
+  outline: none;
+}
+
+.it-contact {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  position: absolute;
+  bottom: 4.4rem;
+  right: 0;
+  background-color: lightseagreen;
+  border-radius: 1rem;
+  color: white;
+}
+.it-contact a,
+.it-contact span {
+  color: yellow;
+}
+.it-contact > a {
+  text-align: center;
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  width: 27rem;
+  border-bottom: 0.1rem solid white;
+}
+.it-contact div {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 27rem;
+}
+.it-contact div p {
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+}
+
+.start-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.color-overlay {
+  background: black;
+  opacity: 0.4;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.start-section > div {
+  background: url("../img/university.jpg");
+  background-position: center;
+  background-size: cover;
+  width: 60vw;
+  height: 30rem;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.welcome-text {
+  background: rgb(63, 94, 251);
+  background: linear-gradient(45deg, rgb(63, 94, 251) 0%, rgb(252, 70, 107) 100%);
+  padding: 1rem;
+  width: 70%;
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  border-radius: 1rem;
+  color: white;
+  z-index: 99;
+}
+.welcome-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.welcome-text p {
+  font-size: 1.5rem;
+}
+
+.panel-block {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+.panel-block > div:first-child {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 60vw;
+}
+
+.block-element {
+  width: 45%;
+  padding: 1.5rem;
+}
+.block-element h3 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  color: lightcoral;
+  font-weight: 600;
+}
+.block-element p {
+  font-size: 1.6rem;
+  font-weight: 450;
+  margin-bottom: 2rem;
+}
+.block-element a {
+  display: block;
+  float: right;
+}
+
+.footer-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background: lightblue;
+  height: 5rem;
+}
+.footer-status span,
+.footer-status a {
+  font-size: 1.4rem;
+}
+
+.btnBack {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  padding-top: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.web-title-login {
+  margin: 0.5rem 0.5rem 0.5rem;
+  border: 0.1rem solid gray;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.6rem;
+}
+.web-title-login h1 {
+  color: lightcoral;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.formContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 60%;
+  margin-bottom: 2rem;
+  background: radial-gradient(circle, rgb(245, 247, 220) 0%, rgb(200, 253, 255) 100%);
+  background: radial-gradient(circle, rgb(245, 247, 220) 0%, rgb(200, 253, 255) 100%);
+}
+
+.titleFormCreate {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.uiMessage {
+  display: none;
+  width: 100%;
+  padding: 0.5rem 1rem;
+}
+.uiMessage span {
+  color: white;
+}
+
+.forgetPassword {
+  margin-left: 5rem;
+  color: rgb(45, 121, 1);
+}
+
+.formCreateNew {
+  width: 100%;
+  padding: 1rem 2rem;
+}
+.formCreateNew fieldset {
+  margin-bottom: 1rem;
+  border-radius: 2rem;
+  border: 2px solid black;
+}
+.formCreateNew fieldset legend {
+  font-size: 1.8rem;
+}
+
+.titleFormCreate {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.font-bold-600 {
+  font-weight: 600;
+}
+
+.inputField {
+  margin-bottom: 2rem;
+}
+.inputField i {
+  color: red;
+}
+
+.longInput {
+  resize: vertical;
+  width: 45rem;
+}
+
+.inputwidth-30 {
+  width: 30rem;
+}
+
+.inputwidth-20 {
+  width: 20rem;
+}
+
+.inputwidth-10 {
+  width: 10rem;
+}
+
+.sectionBottom {
+  float: right;
+  margin: 2rem 2rem;
+}
+
+.text-color-blue {
+  color: blue;
+}
+
+.text-color-green {
+  color: rgb(0, 171, 0);
+}
+
+.text-color-red {
+  color: red;
+}
+
+.notFound-404 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: gray;
+}
+.notFound-404 h4 {
+  font-size: 8rem;
+}
+.notFound-404 p {
+  font-size: 4rem;
+}
+
+.input-button-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.input-button-search button {
+  padding: 0.65rem 2rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.2rem;
+}
+.input-button-search input {
+  padding: 0.5rem 1rem;
+  width: 30rem;
+}
+
+.w3-table-all td {
+  vertical-align: middle;
+}
+
+#btnMoveCourses {
+  padding: 0.65rem 2rem;
+}
+
+.contentImage img {
+  width: 30rem;
+  height: 18rem;
+}
+
+.attendanceRadio {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin: 0 4px;
+}
+
+.link {
+  text-decoration: underline;
+  color: rgb(0, 123, 200);
+}/*# sourceMappingURL=style.css.map */

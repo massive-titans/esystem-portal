@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('include/_header') %>
+  <body>
+    <%- include('include/_bodyHeader') %>
+    <main>
+      <div class="fullWidth fourth-background">
+        <%- include('include/_botContact') %>
+        <section class="width-90vw">
+          <!-- this is top head to display what category we are now -->
+          <div class="width-100 border-bottom-1-gray margin-bottom-1">
+            <h3 id="categoryTitleDisplay">All My Courses</h3>
+          </div>
+          <!-- this is the navigation -->
+          <div class="w3-bar w3-light-grey border-1-gray margin-bottom-1">
+            <a href="" class="w3-bar-item w3-button activated">Category</a>
+            <a href="" class="w3-bar-item w3-button">Setting</a>
+            <div class="w3-dropdown-hover">
+              <button class="w3-button">
+                More&nbsp;<i class="fa-solid fa-chevron-down"></i>
+              </button>
+              <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="" class="w3-bar-item w3-button">Permissions</a>
+                <a href="" class="w3-bar-item w3-button">Restore course</a>
+              </div>
+            </div>
+          </div>
+          <!-- this is the filter for both categories and courses -->
+          <div class="margin-vertical-2 container-row-space-between">
+            <select
+              name=""
+              id="sortCoursesByCategory"
+              class="padding-0_7-1 width-30"
+            >
+              <option value="default">All</option>
+              <% if(typeof categories !== "undefined") {%> <% for(let category
+              of categories) {%>
+              <option value="<%=category._id%>">
+                <%=(category.categoryName)%>
+              </option>
+              <%}%><%}%>
+            </select>
+
+            <form action="" method="get" class="input-button-search">
+              <input
+                type="text"
+                name="searchCoursesInput"
+                id=""
+                placeholder="Search"
+                class=""
+              />
+              <button type="submit" class="w3-blue" id="btnSearchCourse">
+                Search
+              </button>
+            </form>
+          </div>
+
+          <!-- this is the section for courses -->
+          <div>
+            <h4>Courses</h4>
+            <div>
+              <div class="w3-margin-bottom">
+                <a
+                  href="/api/courses/editCourse"
+                  class="w3-button w3-green w3-hover-pale-green"
+                >
+                  Add new course
+                </a>
+              </div>
+              <div>
+                <table class="w3-table-all" id="myCoursesTable">
+                  <thead>
+                    <tr class="w3-light-grey">
+                      <th></th>
+                      <th>Courses</th>
+                      <th>Categories</th>
+                      <th>Course Duration</th>
+                      <th>Creator</th>
+                      <th class="w3-right-align"></th>
+                      <th class="w3-right-align">Students</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <%- include('include/_courseRecords') %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="container-row-space-between margin-vertical-2">
+              <div>
+                <label for="">Sorting</label>
+                <select name="" id="" class="padding-0_7-1 width-20">
+                  <option selected disabled>--select sort--</option>
+                  <option value="1">sort ascending a-z</option>
+                  <option value="2">sort descending z-a</option>
+                </select>
+              </div>
+              <div>
+                <form action="" class="container-row-center">
+                  <label for="">Move selected courses to ...&nbsp;</label>
+                  <select
+                    name=""
+                    id="selectCategoryMove"
+                    class="padding-0_7-1 width-30"
+                    disabled
+                  >
+                    <option selected disabled>--select sort--</option>
+                    <% if(typeof categories !== "undefined") {%> <% for(let
+                    category of categories) {%>
+                    <option value="<%=category._id%>">
+                      <%=(category.categoryName)%>
+                    </option>
+                    <%}%><%}%>
+                  </select>
+                  <button
+                    type="submit"
+                    class="w3-button w3-green"
+                    id="btnMoveCourses"
+                    disabled
+                  >
+                    Move
+                  </button>
+                </form>
+              </div>
+              <div>
+                <button
+                  class="w3-button w3-red"
+                  disabled
+                  id="btnDeleteCategories"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <%- include('include/_footer') %>
+  </body>
+</html>

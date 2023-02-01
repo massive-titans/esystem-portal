@@ -1,0 +1,43 @@
+//font size
+$fontSize: 62.5%;
+
+//button color
+$primaryButton: rgb(11, 189, 217);
+$secondaryButton: rgb(0, 193, 104);
+$thirdary: rgb(213, 52, 235);
+
+//background color
+$popupBackground: white;
+$primaryBackground: radial-gradient(
+  circle,
+  rgba(238, 174, 202, 1) 0%,
+  rgba(148, 187, 233, 1) 100%
+);
+$secondaryBackgroud: lightblue;
+$thirdaryBackgroundDefault: rgb(63, 94, 251);
+$thirdaryBackground: linear-gradient(
+  45deg,
+  rgba(63, 94, 251, 1) 0%,
+  rgba(252, 70, 107, 1) 100%
+);
+$fourthdaryBackgroundDefault: rgb(245, 247, 220);
+$fourthdaryBackgroundDefault: radial-gradient(
+  circle,
+  rgba(245, 247, 220, 1) 0%,
+  rgba(200, 253, 255, 1) 100%
+);
+
+//font color
+$primaryColor: white;
+$secondaryColor: lightcoral;
+
+//dimension
+$nav-barHeight: 6rem;
+$logo-imgHeight: 5rem;
+$chatBotWidth: 27rem;
+
+$filterCourseHeight: 3rem;
+$widthParentForm_1st: 60%;
+
+// color for icon
+$primaryIconColor: red;

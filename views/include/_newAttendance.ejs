@@ -1,0 +1,205 @@
+<div class="formContainer">
+  <div class="formCreateNew">
+    <% if(typeof alert !== "undefined"){ %>
+    <div
+      class="w3-panel w3-display-container w3-orange fullWidth w3-padding-16"
+    >
+      <span><%= alert %></span>
+      <button
+        class="w3-display-topright w3-button w3-large"
+        onclick="this.parentElement.style.display='none'"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <% } %>
+    <h5 class="titleFormCreate">Add new attendance</h5>
+    <form method="post">
+      <fieldset>
+        <legend>General</legend>
+        <div class="inputField container-row-flex-start">
+          <label for="">name</label>&nbsp;<i
+            class="fa-solid fa-circle-exclamation"
+          ></i>
+          <input
+            type="text"
+            name="name"
+            class="w3-input w3-border width-30 margin-left-1 padding-0_2-0_5"
+          />
+        </div>
+        <div class="inputField">
+          <label for="">Description</label>
+          <textarea
+            name="description"
+            cols="50"
+            rows="5"
+            class="w3-input longInput padding-0_2-0_5"
+          ></textarea>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Grade</legend>
+        <div class="inputField">
+          <label for="">Grade</label>&nbsp;<i
+            class="fa-solid fa-circle-exclamation"
+          ></i>
+          <div
+            class="margin-left-3 margin-bottom-1 margin-top-1 container-row-flex-start"
+          >
+            <label for="">Type</label>
+            <select
+              class="w3-select width-10 padding-0_2-0_5 margin-left-1"
+              name="typeGrade"
+              id="selectTypeGrade"
+            >
+              <option value="point" selected>Point</option>
+              <option value="none">None</option>
+            </select>
+          </div>
+          <div class="margin-left-3 container-row-flex-start">
+            <label for="">Maximum Grade</label>
+            <input
+              type="number"
+              name="grade"
+              class="inputGrade w3-input w3-border width-10 padding-0_2-0_5 margin-left-1"
+              min="0"
+              value="10"
+            />
+          </div>
+        </div>
+        <div class="inputField container-row-flex-start">
+          <label for="">Grade to pass</label>&nbsp;<i
+            class="fa-solid fa-circle-exclamation"
+          ></i>
+          <input
+            type="number"
+            name="minGrade"
+            min="0"
+            class="inputGrade w3-input w3-border width-10 margin-left-1 padding-0_2-0_5"
+            value="10"
+          />
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Attendance duration</legend>
+        <div class="container-row-flex-start margin-bottom-1">
+          <label for="">Type</label>
+          <input
+            type="text"
+            name="attendanceType"
+            class="w3-input w3-border width-10 padding-0_2-0_5 margin-left-1"
+            value="All students"
+            disabled
+          />
+        </div>
+        <div class="inputField">
+          <label for="">Start Date</label>&nbsp;<i
+            class="fa-solid fa-circle-exclamation"
+          ></i>
+          <div
+            class="margin-left-3 margin-bottom-1 margin-top-1 container-row-flex-start"
+          >
+            <label for="">Date</label>
+            <input
+              type="date"
+              name="startDate"
+              id=""
+              class="w3-input padding-0_2-0_5 width-15 margin-left-1"
+            />
+          </div>
+          <div class="margin-left-3 container-row-flex-start">
+            <label for="">Time</label>
+            <div class="margin-left-2">
+              <label for="">From</label>
+              <input type="time" class="margin-left-0_5" name="startTime" />
+            </div>
+            <div class="margin-left-2">
+              <label for="">To</label>
+              <input type="time" name="endTime" class="margin-left-0_5" />
+            </div>
+          </div>
+        </div>
+        <div class="inputField">
+          <label for="">End Date</label>&nbsp;<i
+            class="fa-solid fa-circle-exclamation"
+          ></i>
+          <div
+            class="margin-left-3 margin-bottom-1 margin-top-1 container-row-flex-start"
+          >
+            <label for="">Date</label>
+            <input
+              type="date"
+              name="endDate"
+              id=""
+              class="w3-input padding-0_2-0_5 width-15 margin-left-1"
+            />
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Multiple sessions</legend>
+        <div class="inputField container-row-flex-start margin-bottom-1">
+          <label for=""
+            >Repeat on&nbsp;<i class="fa-solid fa-circle-exclamation"></i
+          ></label>
+          <div class="margin-left-1 container-row-flex-start">
+            <input type="checkbox" name="repeatDay" id="" value="monday" />
+            <label for="">Monday</label>
+          </div>
+          <div class="margin-left-1 container-row-flex-start">
+            <input type="checkbox" name="repeatDay" id="" value="tuesday" />
+            <label for="">Tuesday</label>
+          </div>
+          <div class="margin-left-1 container-row-flex-start">
+            <input type="checkbox" name="repeatDay" id="" value="wednesday" />
+            <label for="">Wednesday</label>
+          </div>
+          <div class="margin-left-1 container-row-flex-start">
+            <input type="checkbox" name="repeatDay" id="" value="thursday" />
+            <label for="">Thursday</label>
+          </div>
+          <div class="margin-left-1 container-row-flex-start">
+            <input type="checkbox" name="repeatDay" id="" value="friday" />
+            <label for="">Friday</label>
+          </div>
+          <div class="margin-left-1 container-row-flex-start">
+            <input type="checkbox" name="repeatDay" id="" value="saturday" />
+            <label for="">Saturday</label>
+          </div>
+          <div class="margin-left-1 container-row-flex-start">
+            <input type="checkbox" name="repeatDay" id="" value="sunday" />
+            <label for="">Sunday</label>
+          </div>
+        </div>
+        <div class="inputField container-row-flex-start margin-bottom-1">
+          <label for=""
+            >Repeat every&nbsp;<i class="fa-solid fa-circle-exclamation"></i
+          ></label>
+          <select
+            name="repeatTime"
+            id=""
+            class="w3-select width-5 padding-0_2-0_5 margin-left-1"
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+          <p>week(s)</p>
+        </div>
+      </fieldset>
+      <div class="sectionBottom">
+        <button type="submit" class="w3-button w3-blue" id="btnSaveCourse">
+          Save and Display
+        </button>
+        <button
+          type="reset"
+          class="w3-button w3-gray margin-left-5"
+          id="btnCancelCourse"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

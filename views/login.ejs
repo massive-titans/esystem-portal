@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('include/_header') %>
+
+  <body>
+    <header>
+      <div class="web-title-login">
+        <h1>E-System Portal, Prague</h1>
+      </div>
+      <div class="btnBack">
+        <a
+          href="/"
+          class="w3-button w3-white w3-border w3-border-blue w3-round-large"
+          >&lt;Back</a
+        >
+      </div>
+    </header>
+    <main>
+      <div class="fullWidth">
+        <% if(typeof userInfos !== "undefined") {%> <%-
+        include('include/_logout') %> <% }else{ %> <%- include('include/_login')
+        %> <% } %>
+      </div>
+    </main>
+  </body>
+</html>
