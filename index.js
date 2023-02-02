@@ -1,7 +1,6 @@
 // load third parties modules
 const cookieParser = require("cookie-parser");
 const express = require("express");
-const morgan = require("morgan");
 const dotenv = require("dotenv");
 const bodyparser = require("body-parser");
 const path = require("path");
@@ -13,7 +12,6 @@ const app = express();
 connectDB();
 
 // set the app to use morgan
-app.use(morgan("tiny"));
 app.use(cookieParser());
 
 //set render engine to ejs view engine
