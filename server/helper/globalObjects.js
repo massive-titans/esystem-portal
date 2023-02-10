@@ -5,7 +5,7 @@ const accountType = {
 };
 
 const indexNavigation = {
-  myDashboard: { content: "My Dashboard", link: "/api/my_dashboard" },
+  myDashboard: { content: "My Dashboard", link: "#" },
   myCourses: { content: "My Courses", link: "/api/courses/my_courses" },
   siteAdmin: { content: "Site Administration", link: "/admin/site_admin" },
 };
