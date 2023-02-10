@@ -1,11 +1,28 @@
-<% if(typeof userInfos !== "undefined" ){ %> <% if(userInfos.role ===
-"admin"){%> <% for(let key in navMenu) {%>
-<a href="<%=navMenu[key].link%>" class="w3-bar-item w3-button"
-  ><%=navMenu[key].content%></a
->
-<% } %> <%} else{%> <% for(let key in navMenu) {%> <% if(key !== "siteAdmin")
-{%>
-<a href="<%=navMenu[key].link%>" class="w3-bar-item w3-button"
-  ><%=navMenu[key].content%></a
->
-<% } %> <% } %> <% } %> <% } %>
+<% if(typeof userInfos !=="undefined" ){ %> <% if(userInfos.role==="admin" ){%>
+<% if(typeof tabId !=="undefined" ){ %>
+
+<a href="/" class="w3-bar-item w3-button">Home</a>
+
+<% for(let key in navMenu) {%>
+<%-include('_navOptionActive',{args:navMenu[key]}) %> <% } %> <%} else{%>
+<a href="/" class="w3-bar-item w3-button activated">Home</a>
+<% for(let key in navMenu) {%>
+<a href="<%=navMenu[key].link%>" class="w3-bar-item w3-button">
+  <%=navMenu[key].content%>
+</a>
+
+<% } %> <% } %> <%} else{%> <% if(typeof tabId !=="undefined" ){ %>
+
+<a href="/" class="w3-bar-item w3-button">Home</a>
+<% for(let key in navMenu) {%> <% if(key !=="siteAdmin" ){%>
+<%-include('_navOptionActive',{args:navMenu[key]}) %> <% } %> <% } %> <%}
+else{%>
+<a href="/" class="w3-bar-item w3-button activated">Home</a>
+<% for(let key in navMenu) {%> <% if(key !=="siteAdmin" ){%>
+<a href="<%=navMenu[key].link%>" class="w3-bar-item w3-button">
+  <%=navMenu[key].content%>
+</a>
+<% } %> <% } %> <% } %> <% } %> <%} else{%>
+<a href="/" class="w3-bar-item w3-button activated">Home</a>
+<% } %>
+
