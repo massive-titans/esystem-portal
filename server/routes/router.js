@@ -13,13 +13,30 @@ router.put("/test", controller.testEnrollsStudent);
 router.post("/test", controller.testAddAttendance);
 
 //******************************************************************
+// Android Java RESTful web services
+router.get(
+  "/mobile",
+  authorization.tokenValidation,
+  authorization.studentAccess,
+  controller.mobileUserLogin
+);
 
 //******************************************************************
 //get request
 
-router.get("/api/course", controller.displayCourse);
+router.get(
+  "/api/course",
+  authorization.tokenValidation,
+  authorization.teacherAccess,
+  controller.displayCourse
+);
 
-router.get("/api/course/participants", controller.enrolledParticipants);
+router.get(
+  "/api/course/participants",
+  authorization.tokenValidation,
+  authorization.teacherAccess,
+  controller.enrolledParticipants
+);
 
 router.get(
   "/api/course/participants/enrolls",
@@ -53,12 +70,7 @@ router.get(
   "/api/courses/editCategory",
   authorization.tokenValidation,
   authorization.adminAccess,
-  (req, res) => {
-    res.render("createCategory", {
-      userInfos: req.user,
-      navMenu: globalObjects.indexNavigation,
-    });
-  }
+  controller.displayCreateCategory
 );
 
 router.get(
@@ -71,17 +83,13 @@ router.get(
   "/admin/site_admin",
   authorization.tokenValidation,
   authorization.adminAccess,
-  (req, res) => {
-    res.render("site_admin", {
-      userInfos: req.user,
-      navMenu: globalObjects.indexNavigation,
-    });
-  }
+  controller.showAdminAccess
 );
 
 router.get(
   "/api/course/attendance",
   authorization.tokenValidation,
+  authorization.teacherAccess,
   controller.getAttendance
 );
 
@@ -97,12 +105,7 @@ router.get(
   "/users/add_user",
   authorization.tokenValidation,
   authorization.adminAccess,
-  (req, res) => {
-    res.render("addUser", {
-      userInfos: req.user,
-      navMenu: globalObjects.indexNavigation,
-    });
-  }
+  controller.showCreateNewUser
 );
 //******************************************************************
 
