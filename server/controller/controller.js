@@ -92,6 +92,15 @@ module.exports.createCategory = async (req, res) => {
   res.status(200).redirect("/");
 };
 
+// show create new category form
+module.exports.displayCreateCategory = async (req, res) => {
+  res.render("createCategory", {
+    userInfos: req.user,
+    navMenu: globalObjects.indexNavigation,
+    tabId: globalObjects.indexNavigation.siteAdmin.id,
+  });
+};
+
 // create course
 module.exports.createCourse = async (req, res, next) => {
   const { error } = validation.courseValidation(req.body);
@@ -131,10 +140,17 @@ module.exports.createCourse = async (req, res, next) => {
   res.status(200).redirect("/api/courses/my_courses");
 };
 
+// show create new course form
 module.exports.displayCreateCourse = async (req, res) => {
   const categories = await Category.find();
   const alert = req.alertMessage;
-  res.status(200).render("createCourse", { categories, alert });
+  res.status(200).render("createCourse", {
+    userInfos: req.user,
+    categories,
+    alert,
+    navMenu: globalObjects.indexNavigation,
+    tabId: globalObjects.indexNavigation.myCourses.id,
+  });
 };
 
 module.exports.getMyCourses = async (req, res) => {
@@ -156,8 +172,27 @@ module.exports.getMyCourses = async (req, res) => {
   res.status(200).render("myCourse", {
     userInfos: req.user,
     navMenu: globalObjects.indexNavigation,
+    tabId: globalObjects.indexNavigation.myCourses.id,
     categories,
     courses,
+  });
+};
+
+// display extra admin access tabs
+module.exports.showAdminAccess = async (req, res) => {
+  res.status(200).render("site_admin", {
+    userInfos: req.user,
+    navMenu: globalObjects.indexNavigation,
+    tabId: globalObjects.indexNavigation.siteAdmin.id,
+  });
+};
+
+// show create new user form
+module.exports.showCreateNewUser = async (req, res) => {
+  res.render("addUser", {
+    userInfos: req.user,
+    navMenu: globalObjects.indexNavigation,
+    tabId: globalObjects.indexNavigation.siteAdmin.id,
   });
 };
 
@@ -178,7 +213,12 @@ module.exports.displayCourse = async (req, res) => {
   if (ObjectId.isValid(req.query.sysId)) {
     const course = await Course.findById(req.query.sysId);
     if (course) {
-      res.render("courseDisplay", { course: course });
+      res.render("courseDisplay", {
+        course: course,
+        userInfos: req.user,
+        navMenu: globalObjects.indexNavigation,
+        tabId: globalObjects.indexNavigation.myCourses.id,
+      });
     }
   } else res.redirect("/api/courses/my_courses");
 };
@@ -191,7 +231,12 @@ module.exports.enrolledParticipants = async (req, res) => {
       populate: { path: "accountLogin", select: "email" },
     });
     if (course) {
-      res.render("participants", { course: course });
+      res.render("participants", {
+        course: course,
+        userInfos: req.user,
+        navMenu: globalObjects.indexNavigation,
+        tabId: globalObjects.indexNavigation.myCourses.id,
+      });
     }
   } else res.redirect("/api/course");
 };
@@ -252,6 +297,7 @@ module.exports.getAttendance = async (req, res) => {
       course: course,
       userInfos: req.user,
       navMenu: globalObjects.indexNavigation,
+      tabId: globalObjects.indexNavigation.myCourses.id,
     });
   }
 };
@@ -455,6 +501,18 @@ module.exports.deleteQRCodeSession = async (req, res) => {
     }
   }
 };
+
+// Start Mobile RESTful API
+module.exports.mobileUserLogin = async (req, res) => {
+  const universityId = req.user.id;
+  const courses = await Course.find({ student: universityId }).select(
+    "courseName courseShortName category"
+  );
+
+  res.send(courses);
+};
+
+// End Mobile RESTful API
 
 // Start testing part
 // update student to course
