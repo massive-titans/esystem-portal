@@ -1,7 +1,14 @@
 <footer>
   <div class="footer-status">
+    <% if(typeof userInfos !=="undefined" ){ %>
+    <span
+      >You are logged in
+      as&nbsp<%=userInfos.firstname.toUpperCase()%>&nbsp<%=userInfos.lastname.toUpperCase()%>.&nbsp</span
+    >
+    <a href="" class="link">Logout</a>
+    <%} else{%>
     <span>You are not logged in.&nbsp</span>
-    <a href="">Login</a>
+    <a href="">Login</a><% } %>
   </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
