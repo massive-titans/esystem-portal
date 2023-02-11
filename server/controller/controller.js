@@ -270,9 +270,10 @@ module.exports.updateEnrolledStudents = async (req, res) => {
   const update = { student: req.body.student };
   if (ObjectId.isValid(courseId)) {
     try {
-      await Course.findOneAndUpdate({ _id: courseId }, update, {
-        returnOriginal: false,
+      const result = await Course.findOneAndUpdate({ _id: courseId }, update, {
+        returnOriginal: true,
       });
+      res.send(result);
     } catch (error) {
       res.redirect("/api/course");
     }
