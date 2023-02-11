@@ -144,7 +144,7 @@ $(function () {
 function showParticipants() {
   const urlSplit = window.location.href.split("?");
   const pathUrl = window.location.pathname;
-  const url = `${pathUrl}/enrolls?${urlSplit[1]}`;
+  const url = `${urlSplit[0]}/enrolls?${urlSplit[1]}`;
   $("html").css("overflow-y", "hidden");
   axios
     .get(url)
