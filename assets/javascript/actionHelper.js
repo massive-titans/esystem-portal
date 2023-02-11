@@ -165,7 +165,7 @@ function enrollment(unenrolledStudents, enrolledStudents, $false, $true, url) {
         ></select>
       </form>
     </div>
-    <div class="margin-vertical-2">
+    <div class="margin-vertical-2 container-row-flex-end">
       <button class="w3-button w3-red margin-horizontal-3 cancelAction">
         ${$false}
       </button>
