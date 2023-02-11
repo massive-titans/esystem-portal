@@ -122,10 +122,34 @@ function qrCodeInputBox(title, $true, $false, $body, callback) {
 // function to fate out the enrollment students
 function enrollment(unenrolledStudents, enrolledStudents, $false, $true, url) {
   const $contentEnrollment = `<div class="dialog-ovelay">
-  <div class="padding-2 w3-light-gray w3-round-large">
-  <div class="container-row-center-flex-start">
-    <div class="container-row-center">
-      <div>
+  <div class="padding-2 w3-light-gray w3-round-large container-column-center">
+    <div class="container-row-center-flex-start">
+      <div class="container-row-center">
+        <div>
+          <input
+            class="width-30 w3-input w3-border padding-0_5 margin-bottom-1 w3-round"
+            type="text"
+            name=""
+            id=""
+            placeholder="search"
+          />
+          <select
+            name=""
+            multiple
+            class="width-30 height-40 unregistered"
+            id="unenroll-students"
+          ></select>
+        </div>
+        <div class="margin-horizontal-3 container-column-center">
+          <button class="w3-button w3-gray margin-bottom-2 btnMoveLeft">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="w3-button w3-gray btnMoveRight">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+      <form id="enrollmentForm" action="${url}">
         <input
           class="width-30 w3-input w3-border padding-0_5 margin-bottom-1 w3-round"
           type="text"
@@ -133,34 +157,27 @@ function enrollment(unenrolledStudents, enrolledStudents, $false, $true, url) {
           id=""
           placeholder="search"
         />
-        <select name="" multiple class="width-30 height-40 unregistered" id="unenroll-students"></select>
-      </div>
-      <div class="margin-horizontal-3 container-column-center">
-        <button class="w3-button w3-gray margin-bottom-2 btnMoveLeft">
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <button class="w3-button w3-gray btnMoveRight">
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
-      </div>
+        <select
+          name="student"
+          id="enroll-students"
+          multiple
+          class="width-30 height-40 registered"
+        ></select>
+      </form>
     </div>
-    <form id="enrollmentForm" action="${url}" method="put">
-      <input
-        class="width-30 w3-input w3-border padding-0_5 margin-bottom-1 w3-round"
-        type="text"
-        name=""
-        id=""
-        placeholder="search"
-      />
-      <select name="student" id="enroll-students" multiple class="width-30 height-40 registered"></select>
-      <div class="container-row-flex-end margin-vertical-2">
-        <button class="w3-button w3-red margin-horizontal-3 cancelAction">${$false}</button>
-        <button class="w3-button w3-blue margin-horizontal-3 saveAction" type="submit">${$true}</button>
-      </div>
-    </form>
+    <div class="margin-vertical-2">
+      <button class="w3-button w3-red margin-horizontal-3 cancelAction">
+        ${$false}
+      </button>
+      <button
+        class="w3-button w3-blue margin-horizontal-3 saveAction"
+        type="submit"
+      >
+        ${$true}
+      </button>
+    </div>
   </div>
-  </div>
-  </div>`;
+</div>`;
   // create an enrollment templete and append it to body
   $("body").append($contentEnrollment);
 
@@ -206,7 +223,10 @@ function enrollment(unenrolledStudents, enrolledStudents, $false, $true, url) {
       .fadeOut(100, function () {
         $(this).remove();
       });
+    location.reload();
   });
+
+  // save button
   $(".saveAction").click(function (e) {
     e.preventDefault();
     $("html").css("overflow-y", "visible");
@@ -217,17 +237,17 @@ function enrollment(unenrolledStudents, enrolledStudents, $false, $true, url) {
     for (let i = 0; i < options.length; i++) {
       selectedStudents.push(options[i]);
     }
+    updateEnrollment(url, selectedStudents);
     $(this)
       .parents(".dialog-ovelay")
       .fadeOut(200, function () {
         $(this).remove();
       });
-    updateEnrollment(url, selectedStudents);
-    location.reload();
   });
 }
 
 // post or update students enrollments
+
 async function updateEnrollment(url, students) {
   try {
     const result = await axios({
@@ -235,7 +255,8 @@ async function updateEnrollment(url, students) {
       url: url,
       data: { student: students },
     });
-    console.log(result.data);
+    if (result.status == 200) location.reload();
+    else location.reload();
   } catch (error) {
     console.log(error);
   }
@@ -262,16 +283,6 @@ function displayQRCode(sessionId, duration, url) {
   $("body").prepend($content);
   $("html").css("overflow-y", "hidden");
 
-  // Generate QRCode based on SessionId receiving from Server
-  let qrcode = new QRCode(document.getElementById("qrcodeCanvas"), {
-    text: sessionId,
-    width: 250,
-    height: 250,
-    colorDark: "#000000",
-    colorLight: "#ffffff",
-    correctLevel: QRCode.CorrectLevel.M,
-  });
-
   // After the QRCode displayed, the timer starts
   let intervalId;
   let timer = duration * 60;
@@ -297,6 +308,16 @@ function displayQRCode(sessionId, duration, url) {
       window.reload();
     }
   }, 1000);
+
+  // Generate QRCode based on SessionId receiving from Server
+  new QRCode(document.getElementById("qrcodeCanvas"), {
+    text: sessionId,
+    width: 250,
+    height: 250,
+    colorDark: "#000000",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.M,
+  });
 }
 
 export { confirm, enrollment, warningBox, qrCodeInputBox, displayQRCode };
