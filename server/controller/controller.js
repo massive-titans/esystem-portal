@@ -513,6 +513,23 @@ module.exports.mobileUserLogin = async (req, res) => {
   res.send(courses);
 };
 
+module.exports.authMobileUser = async (req, res) => {
+  const { error } = validation.authValidation({
+    email: req.query.email,
+    password: req.query.password,
+  });
+
+  if (error) return res.status(400).send(error);
+
+  const user = await Account.findOne({ email: req.query.email });
+  if (!user) return res.status(400).send("Invalid email or password!");
+
+  const validPassword = await bcrypt.compare(req.query.password, user.password);
+  if (!validPassword) return res.status(400).send("Invalid email or password!");
+
+  const token = await user.generateAuthJWT();
+  res.status(200).send("Token: " + token);
+};
 // End Mobile RESTful API
 
 // Start testing part
