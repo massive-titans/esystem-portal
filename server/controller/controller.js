@@ -528,7 +528,7 @@ module.exports.authMobileUser = async (req, res) => {
   if (!validPassword) return res.status(400).send("Invalid email or password!");
 
   const token = await user.generateAuthJWT();
-  res.status(200).send("Token: " + token);
+  res.status(200).send(token);
 };
 // End Mobile RESTful API
 
