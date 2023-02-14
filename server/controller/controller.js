@@ -525,7 +525,13 @@ module.exports.authMobileUser = async (req, res) => {
   if (!validPassword) return res.status(400).send({ errorMessage });
 
   const token = await user.generateAuthJWT();
-  res.status(200).send({ token });
+  const student = jwt.verify(token, process.env.TOKEN_SECRET_KEY);
+
+  const courses = await Course.find({ student: student.id }).select(
+    "courseName courseShortName category"
+  );
+
+  res.status(200).send({ token, courses });
 };
 // End Mobile RESTful API
 
