@@ -22,7 +22,7 @@ router.get(
 );
 
 // Login from mobile
-router.get("/mobile/auth", controller.authMobileUser);
+router.post("/mobile/auth", controller.authMobileUser);
 //******************************************************************
 //get request
 
