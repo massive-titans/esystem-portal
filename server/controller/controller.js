@@ -2,6 +2,7 @@ const _ = require("lodash");
 const bcrypt = require("bcrypt");
 const ObjectId = require("mongoose").Types.ObjectId;
 const QRCode = require("qrcode");
+const jwt = require("jsonwebtoken");
 
 // Schema import
 const validation = require("../helper/validation");
