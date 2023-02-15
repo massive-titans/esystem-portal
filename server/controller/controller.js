@@ -507,10 +507,9 @@ module.exports.deleteQRCodeSession = async (req, res) => {
 // Start Mobile RESTful API
 module.exports.mobileUserLogin = async (req, res) => {
   const universityId = req.user.id;
-  const courses = await Course.find({ student: universityId }).select(
-    "courseName courseShortName category"
-  );
-
+  const courses = await Course.find({student: universityId})
+    .populate("category", "categoryName -_id")
+    .select("courseName courseShortName categoryName");
   res.send(courses);
 };
 
