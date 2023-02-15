@@ -5,7 +5,7 @@ const globalObjects = require("../server/helper/globalObjects");
 dotenv.config({ path: "config.env" });
 
 function tokenValidation(req, res, next) {
-  const token = req.cookies["x-auth-token"];
+  const token = req.cookies["x-auth-token"] || req.query.token;
   if (!token) return res.status(401).send("access denied!");
   try {
     const decoded = jwt.verify(token, process.env.TOKEN_SECRET_KEY);
