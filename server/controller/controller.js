@@ -528,9 +528,9 @@ module.exports.authMobileUser = async (req, res) => {
   const token = await user.generateAuthJWT();
   const student = jwt.verify(token, process.env.TOKEN_SECRET_KEY);
 
-  const courses = await Course.find({ student: student.id }).select(
-    "courseName courseShortName category"
-  );
+  const courses = await Course.find({student: student.id})
+    .populate("category", "categoryName -_id")
+    .select("courseName courseShortName categoryName");
 
   res.status(200).send({ token, courses });
 };
