@@ -31,6 +31,14 @@ router.get(
   authorization.studentAccess,
   controller.getAllParticipants
 );
+
+// get all attendances for a user on one course
+router.get(
+  "/mobile/course/attendances",
+  authorization.tokenValidation,
+  authorization.studentAccess,
+  controller.getAllAttendances
+);
 //******************************************************************
 //get request
 
