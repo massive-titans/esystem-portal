@@ -23,6 +23,14 @@ router.get(
 
 // Login from mobile
 router.post("/mobile/auth", controller.authMobileUser);
+
+// get all course's participants
+router.get(
+  "/mobile/course/participants",
+  authorization.tokenValidation,
+  authorization.studentAccess,
+  controller.getAllParticipants
+);
 //******************************************************************
 //get request
 
