@@ -541,7 +541,7 @@ module.exports.getAllParticipants = async (req, res) => {
     .populate("student", "firstName lastName accountLogin")
     .select("student -_id");
 
-  res.send(participants);
+  res.send({participants});
 };
 // End Mobile RESTful API
 
