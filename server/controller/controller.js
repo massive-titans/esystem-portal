@@ -533,6 +533,16 @@ module.exports.authMobileUser = async (req, res) => {
 
   res.status(200).send({ token, courses });
 };
+
+module.exports.getAllParticipants = async (req, res) => {
+  const userId = req.user.id;
+  const courseId = req.query._id;
+  const participants = await Course.findById(courseId)
+    .populate("student", "firstName lastName accountLogin")
+    .select("student");
+
+  res.send(participants);
+};
 // End Mobile RESTful API
 
 // Start testing part
