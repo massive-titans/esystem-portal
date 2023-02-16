@@ -580,7 +580,7 @@ module.exports.getAllAttendances = async (req, res) => {
           attendances.push({
             isPresent: student.isPresent,
             point: student.point,
-            date: session.date,
+            date: session.date.toLocaleDateString("en-GB"),
             id: session._id,
           });
         }
