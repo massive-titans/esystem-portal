@@ -546,6 +546,52 @@ module.exports.getAllParticipants = async (req, res) => {
     res.status(400).send({errorMessage});
   }
 };
+
+module.exports.getAllAttendances = async (req, res) => {
+  let allSessions = [];
+  let attendances = [];
+  const errorMessage = "Invalid Requested!";
+  const userId = req.user.id;
+  const courseId = req.query._id;
+  if (ObjectId.isValid(courseId)) {
+    const course = await Course.findById(courseId)
+      .populate({
+        path: "hasAttendance",
+        select: "sessions",
+        populate: {
+          path: "sessions.sessionRefs",
+          populate: {
+            path: "sessions",
+          },
+        },
+      })
+      .select("courseName-_id");
+
+    // function and iteration to get an attendance for single student;
+    for (let sessions1 of course.hasAttendance.sessions) {
+      for (let sessions2 of sessions1.sessionRefs.sessions) {
+        allSessions.push(sessions2);
+      }
+    }
+
+    for (let session of allSessions) {
+      for (let student of session.students) {
+        if (student.student == userId) {
+          attendances.push({
+            isPresent: student.isPresent,
+            point: student.point,
+            date: session.date,
+            id: session._id,
+          });
+        }
+      }
+    }
+
+    res.status(200).send(attendances);
+  } else {
+    res.status(400).send({errorMessage});
+  }
+};
 // End Mobile RESTful API
 
 // Start testing part
