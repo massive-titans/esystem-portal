@@ -535,13 +535,16 @@ module.exports.authMobileUser = async (req, res) => {
 };
 
 module.exports.getAllParticipants = async (req, res) => {
-  const userId = req.user.id;
+  const errorMessage = "Invalid Requested!";
   const courseId = req.query._id;
-  const participants = await Course.findById(courseId)
-    .populate("student", "firstName lastName accountLogin")
-    .select("student -_id");
-
-  res.send({participants});
+  if (ObjectId.isValid(courseId)) {
+    const participants = await Course.findById(courseId)
+      .populate("student", "firstName lastName accountLogin")
+      .select("student -_id");
+    res.status(200).send(participants.student);
+  } else {
+    res.status(400).send({errorMessage});
+  }
 };
 // End Mobile RESTful API
 
