@@ -539,7 +539,7 @@ module.exports.getAllParticipants = async (req, res) => {
   const courseId = req.query._id;
   const participants = await Course.findById(courseId)
     .populate("student", "firstName lastName accountLogin")
-    .select("student");
+    .select("student -_id");
 
   res.send(participants);
 };
