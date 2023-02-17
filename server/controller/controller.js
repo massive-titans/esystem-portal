@@ -592,6 +592,31 @@ module.exports.getAllAttendances = async (req, res) => {
     res.status(400).send({errorMessage});
   }
 };
+
+// verify if correct enrolled student and get a qr session;
+module.exports.getQRSessionOneStudent = async (req, res) => {
+  let sessionStored = {};
+  const errorMessage = "Invalid Requested!";
+  const userId = req.user.id;
+  const sessionId = req.query.sessionId;
+
+  const result = await QRSession.findOne({sessionId: sessionId}).populate(
+    "singleSessionId"
+  );
+  if (result) {
+    const students = result.singleSessionId.students;
+    for (let student of students) {
+      if (student.student == userId) {
+        sessionStored.maxLength = result.maxLength;
+        sessionStored.objectLocation = result.objectLocation;
+        sessionStored.unitSessionId = result.singleSessionId._id;
+      }
+    }
+    res.status(200).send(sessionStored);
+    return;
+  }
+  res.status(400).send(errorMessage);
+};
 // End Mobile RESTful API
 
 // Start testing part
