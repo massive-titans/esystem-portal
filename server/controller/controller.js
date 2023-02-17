@@ -612,8 +612,9 @@ module.exports.getQRSessionOneStudent = async (req, res) => {
         sessionStored.unitSessionId = result.singleSessionId._id;
       }
     }
-    res.status(200).send(sessionStored);
-    return;
+    if (Object.keys(sessionStored).length != 0)
+      return res.status(200).send(sessionStored);
+    else return res.status(404).send(errorMessage);
   }
   res.status(400).send(errorMessage);
 };
