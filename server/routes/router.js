@@ -39,6 +39,14 @@ router.get(
   authorization.studentAccess,
   controller.getAllAttendances
 );
+
+// get session QR code
+router.get(
+  "/mobile/course/attendances/qrsession",
+  authorization.tokenValidation,
+  authorization.studentAccess,
+  controller.getQRSessionOneStudent
+);
 //******************************************************************
 //get request
 
