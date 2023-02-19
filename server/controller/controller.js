@@ -620,6 +620,23 @@ module.exports.getQRSessionOneStudent = async (req, res) => {
   }
   res.status(400).send(errorMessage);
 };
+
+// submit attendance and send a response
+module.exports.submitAttendance = async (req, res) => {
+  const errorMessage = "Invalid Requested!";
+  const successUpdated = "Successfully updated!";
+  const userId = req.user.id;
+  const unitSessionId = req.query.unitSessionId;
+  if (ObjectId.isValid(unitSessionId) && ObjectId.isValid(userId)) {
+    const updatedSingleSession = await SingleSession.findByIdAndUpdate(
+      unitSessionId,
+      {$set: {"students.$[elem].isPresent": "present"}},
+      {arrayFilters: [{"elem.student": userId}], new: true}
+    );
+    return res.status(200).send(successUpdated);
+  }
+  return res.status(400).send(errorMessage);
+};
 // End Mobile RESTful API
 
 // Start testing part
