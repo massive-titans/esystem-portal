@@ -600,9 +600,9 @@ module.exports.getQRSessionOneStudent = async (req, res) => {
   const userId = req.user.id;
   const sessionId = req.query.sessionId;
 
-  const result = await QRSession.findOne({sessionId: sessionId}).populate(
-    "singleSessionId"
-  );
+  const result = await QRSession.findOne({sessionId: sessionId})
+    .populate("singleSessionId")
+    .populate("courseId");
   if (result) {
     const students = result.singleSessionId.students;
     for (let student of students) {
@@ -610,6 +610,7 @@ module.exports.getQRSessionOneStudent = async (req, res) => {
         sessionStored.maxLength = result.maxLength;
         sessionStored.objectLocation = result.objectLocation;
         sessionStored.unitSessionId = result.singleSessionId._id;
+        sessionStored.courseName = result.courseId.courseName;
       }
     }
     if (Object.keys(sessionStored).length != 0)
