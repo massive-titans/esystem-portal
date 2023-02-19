@@ -12,6 +12,10 @@ const qrsessionSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "SingleSession",
   },
+  courseId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Course",
+  },
   createdAt: {
     type: Date,
     default: Date.now,
