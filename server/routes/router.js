@@ -47,6 +47,14 @@ router.get(
   authorization.studentAccess,
   controller.getQRSessionOneStudent
 );
+
+// submit attendance
+router.patch(
+  "/mobile/course/attendances/qrsession",
+  authorization.tokenValidation,
+  authorization.studentAccess,
+  controller.submitAttendance
+);
 //******************************************************************
 //get request
 
