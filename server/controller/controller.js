@@ -460,6 +460,7 @@ module.exports.createQRSession = async (req, res) => {
   const courseId = req.query.sysId;
   const sessionId = req.query.sessionId;
   const qrSession = req.body;
+  qrSession.courseId = courseId;
   qrSession.sessionId = extFuntion.createUUID();
   qrSession.singleSessionId = sessionId;
   if (ObjectId.isValid(courseId) && ObjectId.isValid(sessionId)) {
