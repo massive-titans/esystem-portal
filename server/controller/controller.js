@@ -633,7 +633,7 @@ module.exports.submitAttendance = async (req, res) => {
       {$set: {"students.$[elem].isPresent": "present"}},
       {arrayFilters: [{"elem.student": userId}], new: true}
     );
-    return res.status(200).send(successUpdated);
+    return res.status(200).send({successUpdated});
   }
   return res.status(400).send(errorMessage);
 };
