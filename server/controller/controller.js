@@ -459,6 +459,11 @@ module.exports.saveAttendanceSession = async (req, res) => {
 module.exports.createQRSession = async (req, res) => {
   const courseId = req.query.sysId;
   const sessionId = req.query.sessionId;
+  if (ObjectId.isValid(sessionId)) {
+    await QRSession.findOneAndDelete({
+      singleSessionId: sessionId,
+    });
+  }
   const qrSession = req.body;
   qrSession.courseId = courseId;
   qrSession.sessionId = extFuntion.createUUID();
