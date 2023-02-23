@@ -29,6 +29,7 @@ const qrCodeBody = `<form class="qrcode-form">
 </div
 </form>`;
 
+// Select sort course by category
 $(function () {
   $("#sortCoursesByCategory").on("change", function () {
     // get value from select option
@@ -57,7 +58,7 @@ $(function () {
 
 // form create and append attr and value on button delete
 $(function () {
-  $("#btnDeleteCategories").on("click", function () {
+  $("#btnDeleteCourses").on("click", function () {
     $("html").css("overflow-y", "hidden");
 
     const courseIds = [];
@@ -108,32 +109,38 @@ $(function () {
 
 const deleteCourse = async (id) => {
   try {
-    await axios({ url: `${BASE_URL}/api/courses/${id}`, method: "delete" });
+    await axios({url: `${BASE_URL}/api/courses/${id}`, method: "delete"});
     window.location.reload();
   } catch (error) {
     console.log(error);
   }
 };
 
+// This function is used for Courses.
 // if at least one checkbox select, then the move and delete button will be enable
 $(function () {
-  const checkboxs = $("#myCoursesTable input[type=checkbox]");
-  const btnDeleteCourse = $("#btnDeleteCategories");
+  const checkboxs = $(".records_tables input[type=checkbox]");
+  const group_button_enable = $(".group_button");
   const btnMoveCourse = $("#btnMoveCourses");
   const selectMoveCategory = $("#selectCategoryMove");
   checkboxs.on("change", function () {
     if (checkboxs.is(":checked")) {
-      $(btnDeleteCourse).attr("disabled", false);
       $(btnMoveCourse).attr("disabled", false);
       $(selectMoveCategory).attr("disabled", false);
+      $(group_button_enable).attr("disabled", false);
     } else {
-      $(btnDeleteCourse).attr("disabled", true);
       $(btnMoveCourse).attr("disabled", true);
       $(selectMoveCategory).attr("disabled", true);
+      $(group_button_enable).attr("disabled", true);
     }
   });
 });
 
+// This function is used for Participants.
+// if at least one checkbox select, then the move and delete button will be enable
+$(function () {});
+
+// when enroll student's button click, the function is called to fetch students and display
 $(function () {
   $("#enrollStudents").click(function () {
     showParticipants();
@@ -158,6 +165,7 @@ function showParticipants() {
     });
 }
 
+// Select type grade event
 $(function () {
   $("#selectTypeGrade").change(function () {
     if ($(".inputGrade").is(":disabled")) {
@@ -169,6 +177,7 @@ $(function () {
   });
 });
 
+// TODO: Save Attendance event click
 $(function () {
   $("#btnSaveAttendanceSession").on("click", async function () {
     const update = [];
@@ -199,6 +208,34 @@ $(function () {
   });
 });
 
+// Button event remove students click
+$(function () {
+  $("#btnRemoveStudents").on("click", function () {
+    $("html").css("overflow-y", "hidden");
+
+    const studentIds = [];
+    // get form by id
+    $("#participantsTable tbody tr input[type=checkbox]:checked").each(
+      function () {
+        const row = $(this).closest("tr");
+        let column = $("td:nth-child(2)", row);
+        studentIds.push(column.find(".participant_id").val());
+      }
+    );
+
+    confirm(
+      "Confirm deletion",
+      "Are you sure to delete these all items?",
+      "Yes",
+      "Cancel",
+      function () {
+        // deleteCourses(courseIds);
+      }
+    );
+  });
+});
+
+// Button event generate and display QR Code
 $(function () {
   $("#btnGenerateQR").on("click", function () {
     if (navigator.geolocation) {
