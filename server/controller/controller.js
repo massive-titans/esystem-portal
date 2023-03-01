@@ -553,7 +553,7 @@ module.exports.getAllParticipants = async (req, res) => {
   }
 };
 
-module.exports.getAllAttendances = async (req, res) => {
+module.exports.getAllAttendances = async (req, res, next) => {
   let allSessions = [];
   let attendances = [];
   const errorMessage = "Invalid Requested!";
@@ -572,7 +572,10 @@ module.exports.getAllAttendances = async (req, res) => {
         },
       })
       .select("courseName-_id");
+
     if (!course) return res.status(200).send([]);
+    if (!ObjectId.isValid(course.hasAttendance))
+      return res.status(200).send([]);
     // function and iteration to get an attendance for single student;
     for (let sessions1 of course.hasAttendance.sessions) {
       for (let sessions2 of sessions1.sessionRefs.sessions) {
@@ -593,10 +596,8 @@ module.exports.getAllAttendances = async (req, res) => {
       }
     }
 
-    res.status(200).send(attendances);
-  } else {
-    res.status(400).send({errorMessage});
-  }
+    return res.status(200).send(attendances);
+  } else return res.status(400).send({errorMessage});
 };
 
 // verify if correct enrolled student and get a qr session;
