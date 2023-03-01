@@ -4,13 +4,7 @@ const router = express.Router();
 const authorization = require("../../middleware/authorization");
 const globalObjects = require("../helper/globalObjects");
 
-//******************************************************************
-// testing area
-router.get("/test", controller.testController);
-
-router.put("/test", controller.testEnrollsStudent);
-
-router.post("/test", controller.testAddAttendance);
+// Testing route
 
 //******************************************************************
 // Android Java RESTful web services
@@ -47,7 +41,6 @@ router.get(
   authorization.studentAccess,
   controller.getQRSessionOneStudent
 );
-
 // submit attendance
 router.patch(
   "/mobile/course/attendances/qrsession",
@@ -85,7 +78,7 @@ router.get("/", authorization.publicAccess, (req, res) => {
 });
 
 router.get("/auth", authorization.publicAccess, (req, res) => {
-  res.render("login", { userInfos: req.user });
+  res.render("login", {userInfos: req.user});
 });
 
 router.get("/auth/logout", (req, res) => {
@@ -110,6 +103,7 @@ router.get(
 router.get(
   "/api/courses/my_courses",
   authorization.tokenValidation,
+  authorization.teacherAccess,
   controller.getMyCourses
 );
 
@@ -151,12 +145,14 @@ router.post("/auth", controller.authUser);
 router.post(
   "/users/add_user",
   authorization.tokenValidation,
+  authorization.adminAccess,
   controller.createUser
 );
 
 router.post(
   "/api/courses/editCategory",
   authorization.tokenValidation,
+  authorization.adminAccess,
   controller.createCategory
 );
 
@@ -216,6 +212,8 @@ router.delete(
 // request update enrolled students to the course
 router.put(
   "/api/course/participants/enrolls",
+  authorization.tokenValidation,
+  authorization.teacherAccess,
   controller.updateEnrolledStudents
 );
 
