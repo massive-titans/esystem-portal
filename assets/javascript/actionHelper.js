@@ -188,7 +188,7 @@ function enrollment(unenrolledStudents, enrolledStudents, $false, $true, url) {
         <option value="<%=students[i]._id%>" class="padding-0_5"><%=students[i].firstName%>&nbsp;<%=students[i].lastName%></option>
       <% } %>
     <% } %>`,
-    { students: unenrolledStudents }
+    {students: unenrolledStudents}
   );
 
   const listStudentsEnrolled = ejs.render(
@@ -197,7 +197,7 @@ function enrollment(unenrolledStudents, enrolledStudents, $false, $true, url) {
         <option value="<%=students[i]._id%>" class="padding-0_5"><%=students[i].firstName%>&nbsp;<%=students[i].lastName%></option>
       <% } %>
     <% } %>`,
-    { students: enrolledStudents }
+    {students: enrolledStudents}
   );
 
   $(".unregistered").append(listStudentsUnenrolled);
@@ -237,6 +237,7 @@ function enrollment(unenrolledStudents, enrolledStudents, $false, $true, url) {
     for (let i = 0; i < options.length; i++) {
       selectedStudents.push(options[i]);
     }
+
     updateEnrollment(url, selectedStudents);
     $(this)
       .parents(".dialog-ovelay")
@@ -253,7 +254,7 @@ async function updateEnrollment(url, students) {
     const result = await axios({
       method: "put",
       url: url,
-      data: { student: students },
+      data: {student: students},
     });
     if (result.status == 200) location.reload();
     else location.reload();
@@ -266,7 +267,7 @@ async function removeQRCodeSession(sessionId, url) {
   await axios({
     method: "delete",
     url: url,
-    data: { sessionId: sessionId },
+    data: {sessionId: sessionId},
   });
 }
 
@@ -320,4 +321,4 @@ function displayQRCode(sessionId, duration, url) {
   });
 }
 
-export { confirm, enrollment, warningBox, qrCodeInputBox, displayQRCode };
+export {confirm, enrollment, warningBox, qrCodeInputBox, displayQRCode};
