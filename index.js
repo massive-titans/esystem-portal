@@ -9,7 +9,7 @@ const connectDB = require("./server/database/connection");
 // create main app for application
 const app = express();
 
-connectDB();
+app.connectDB;
 
 // set the app to use morgan
 app.use(cookieParser());
