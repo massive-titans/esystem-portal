@@ -516,6 +516,7 @@ module.exports.mobileUserLogin = async (req, res) => {
   const courses = await Course.find({student: universityId})
     .populate("category", "categoryName -_id")
     .select("courseName courseShortName categoryName");
+  if (!courses) return res.status(200).send([]);
   res.send(courses);
 };
 
