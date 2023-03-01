@@ -306,3 +306,4 @@ const createQRCode = async (objectLocation) => {
     alert(new Error(error));
   }
 };
+
