@@ -22,7 +22,6 @@ const saveRoleUser = require("./saveRoleUser");
 const globalObjects = require("../helper/globalObjects");
 const DynamicProfile = require("../model/dynamicRef");
 const extFuntion = require("../helper/additionalFunction");
-const AttendanceModifiers = require("../controller/modifyAttendanceUser");
 require("datejs");
 
 module.exports.createUser = async (req, res, next) => {
