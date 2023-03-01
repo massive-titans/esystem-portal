@@ -572,7 +572,7 @@ module.exports.getAllAttendances = async (req, res) => {
         },
       })
       .select("courseName-_id");
-
+    if (!course) return res.status(200).send([]);
     // function and iteration to get an attendance for single student;
     for (let sessions1 of course.hasAttendance.sessions) {
       for (let sessions2 of sessions1.sessionRefs.sessions) {
