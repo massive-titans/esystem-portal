@@ -691,7 +691,6 @@ module.exports.getQRSessionOneStudent = async (req, res) => {
 
 module.exports.submitAttendance = async (req, res) => {
   const errorMessage = "Invalid Requested!";
-  const successUpdated = "Successfully updated!";
   const userId = req.user.id;
   const unitSessionId = req.query.unitSessionId;
   if (ObjectId.isValid(unitSessionId) && ObjectId.isValid(userId)) {
@@ -700,7 +699,7 @@ module.exports.submitAttendance = async (req, res) => {
       {$set: {"students.$[elem].isPresent": "present"}},
       {arrayFilters: [{"elem.student": userId}], new: true}
     );
-    return res.status(200).send(successUpdated);
+    return res.status(200).send({successUpdated: UIMessage.successUpdated});
   }
   return res.status(400).send(errorMessage);
 };
