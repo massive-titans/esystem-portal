@@ -135,6 +135,20 @@ router.get(
   authorization.adminAccess,
   controller.showCreateNewUser
 );
+
+router.get(
+  "/classrooms/add_classroom",
+  authorization.tokenValidation,
+  authorization.adminAccess,
+  controller.showCreateNewClassLocation
+);
+
+router.get(
+  "/classroom/classroom_geolocation",
+  authorization.tokenValidation,
+  authorization.teacherAccess,
+  controller.getCreatedClassroom
+);
 //******************************************************************
 
 //******************************************************************
@@ -176,6 +190,13 @@ router.post(
   authorization.tokenValidation,
   authorization.teacherAccess,
   controller.createQRSession
+);
+
+router.post(
+  "/classrooms/add_classroom",
+  authorization.tokenValidation,
+  authorization.adminAccess,
+  controller.createNewClassLocation
 );
 //******************************************************************
 
