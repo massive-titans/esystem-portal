@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('include/_header') %>
+  <body>
+    <%- include('include/_bodyHeader') %>
+    <div class="btnBack">
+      <a
+        href="/admin/site_admin"
+        class="w3-button w3-white w3-border w3-border-blue w3-round-large padding-0_2-0_5"
+        >&lt;Back</a
+      >
+    </div>
+    <main>
+      <div class="fullWidth">
+        <%- include('include/_botContact') %>
+
+        <!-- create or edit new classroom form -->
+        <div class="formContainer">
+          <div class="formCreateNew">
+            <% if(typeof alert !== "undefined"){ %>
+            <div class="w3-container w3-orange fullWidth w3-padding-16">
+              <span><%= alert %></span>
+            </div>
+            <% } %>
+            <h5 class="titleFormCreate">Add new classroom</h5>
+            <form action="/classrooms/add_classroom" method="post">
+              <fieldset>
+                <legend>Classroom</legend>
+                <div class="inputField">
+                  <label for="classroomNumber">Classroom number</label>
+                  <i class="fa-solid fa-circle-exclamation"></i>
+                  <input
+                    id="classroomNumber"
+                    type="text"
+                    name="classroomNumber"
+                    class="w3-input w3-border"
+                    placeholder="Room number"
+                    autocomplete="off"
+                    required
+                  />
+                </div>
+                <div class="inputField">
+                  <label for="classroomLatitude">Latitude</label>
+                  <i class="fa-solid fa-circle-exclamation"></i>
+                  <input
+                    id="classroomLatitude"
+                    type="number"
+                    step="0.00000000000000001"
+                    name="latitude"
+                    class="w3-input w3-border"
+                    placeholder="90.000000"
+                    autocomplete="off"
+                    required
+                  />
+                </div>
+                <div class="inputField">
+                  <label for="classroomLongitude">Longitude</label>
+                  <i class="fa-solid fa-circle-exclamation"></i>
+                  <input
+                    id="classroomLongitude"
+                    type="number"
+                    step="0.00000000000000001"
+                    name="longitude"
+                    class="w3-input w3-border"
+                    placeholder="90.000000"
+                    autocomplete="off"
+                    required
+                  />
+                </div>
+              </fieldset>
+              <div class="sectionBottom">
+                <button
+                  type="submit"
+                  class="w3-button w3-blue"
+                  id="btnSaveCourse"
+                >
+                  Save
+                </button>
+                <button
+                  type="reset"
+                  class="w3-button w3-gray margin-left-5"
+                  id="btnCancelCourse"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+          <p class="w3-margin">
+            <span class="text-style-bold">Note:</span>&nbsp;For enhanced
+            precision, it is recommended that the geolocation <br />of the
+            classroom be positioned at the center of the class.
+          </p>
+        </div>
+      </div>
+    </main>
+    <%- include('include/_footer') %>
+  </body>
+</html>
