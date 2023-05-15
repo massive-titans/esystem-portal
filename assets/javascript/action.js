@@ -9,6 +9,12 @@ import {
 
 const qrCodeBody = `<form class="qrcode-form">
 <div class="margin-bottom-1">
+  <label for="">Classroom</label>
+  <select name="classroomNumber" id="classroomNumber">
+    <option value="" selected disabled>--None--</option>
+  </select>
+</div>
+<div class="margin-bottom-1">
   <label for="">Maximum Length</label>
   <select name="maxLength" id="maxLength">
     <option value="10" selected>10&nbsp;m</option>
@@ -28,6 +34,8 @@ const qrCodeBody = `<form class="qrcode-form">
   </select>
 </div
 </form>`;
+const warningContent = `QR Code are only permitted when location sharing is enabled. Instruction to enable location, please follow the&nbsp;<a class="link"
+href="https://help.yahoo.com/kb/SLN24008.html" target="_blank">Link</a>`;
 
 // Select sort course by category
 $(function () {
@@ -178,6 +186,7 @@ $(function () {
 });
 
 // TODO: Save Attendance event click
+// To be improved!
 $(function () {
   $("#btnSaveAttendanceSession").on("click", async function () {
     const update = [];
@@ -229,7 +238,7 @@ $(function () {
       "Yes",
       "Cancel",
       function () {
-        // deleteCourses(courseIds);
+        // To be improved!
       }
     );
   });
@@ -237,73 +246,78 @@ $(function () {
 
 // Button event generate and display QR Code
 $(function () {
-  $("#btnGenerateQR").on("click", function () {
-    if (navigator.geolocation) {
-      $("html").css("overflow-y", "hidden");
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const location = {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-          };
-          qrCodeInputBox(
-            "Generate QR Code",
-            "Generate",
-            "Cancel",
-            qrCodeBody,
-            function () {
-              createQRCode(location);
-            }
-          );
-        },
-        (error) => {
-          const warningContent = `QR Code are only permitted when location sharing is enabled. Instruction to enable location, please follow the&nbsp;<a class="link"
-          href="https://help.yahoo.com/kb/SLN24008.html" target="_blank">Link</a>`;
-          warningBox("Warning", warningContent, "Close");
-          console.log(error);
-        }
-      );
-    } else {
-      warningBox(
-        "Warning",
-        "Geolocation is not supported on your browser!",
-        "Close"
-      );
+  $("#btnGenerateQR").on("click", async function () {
+    try {
+      const url = `/classroom/classroom_geolocation`;
+      const result = await axios({
+        url: url,
+        method: "get",
+      });
+      if (result.data.classrooms.length > 0) {
+        $("html").css("overflow-y", "hidden");
+        qrCodeInputBox(
+          "Generate QR Code",
+          "Generate",
+          "Cancel",
+          qrCodeBody,
+          result.data.classrooms,
+          function () {
+            createQRCode();
+          }
+        );
+      } else {
+        warningBox(
+          "Warning",
+          "lassrooms are currently unavailable. Please liaise with the administration to establish a new classroom.",
+          "Close"
+        );
+      }
+    } catch (error) {
+      alert(new Error(error));
     }
   });
 });
 
 // callback function for QR code form
-const createQRCode = async (objectLocation) => {
+const createQRCode = async () => {
   const data = {};
 
-  // assign object location to
-  data.objectLocation = objectLocation;
   $(".qrcode-form select").each(function (index) {
     let value = $(this).val();
     let key = $(this).attr("name");
-    if (key === "maxLength") {
-      data.maxLength = value;
-    } else if (key === "attendanceDuration") {
-      data.attendanceDuration = value;
+    if (value == null) {
+      alert("Please select a classroom!");
+      return;
+    } else {
+      if (key === "classroomNumber") {
+        data.objectLocation = {
+          latitude: value.split(";")[0],
+          longitude: value.split(";")[1],
+        };
+      } else if (key === "maxLength") {
+        data.maxLength = value;
+      } else if (key === "attendanceDuration") {
+        data.attendanceDuration = value;
+      }
     }
   });
-  const url = `${window.location.pathname}/qrCode?${
-    window.location.href.split("?")[1]
-  }`;
-  try {
-    const response = await axios({
-      url: url,
-      method: "post",
-      data: data,
-    });
-    displayQRCode(
-      response.data.sessionId,
-      response.data.attendanceDuration,
-      url
-    );
-  } catch (error) {
-    alert(new Error(error));
+  if (data.objectLocation != undefined) {
+    const url = `${window.location.pathname}/qrCode?${
+      window.location.href.split("?")[1]
+    }`;
+    try {
+      const response = await axios({
+        url: url,
+        method: "post",
+        data: data,
+      });
+      displayQRCode(
+        response.data.sessionId,
+        response.data.attendanceDuration,
+        url
+      );
+    } catch (error) {
+      alert(new Error(error));
+    }
   }
 };
-
