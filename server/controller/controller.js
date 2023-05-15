@@ -298,6 +298,7 @@ module.exports.getSessionSingleCheck = async (req, res, next) => {
       session: session,
       userInfos: req.user,
       navMenu: globalObjects.indexNavigation,
+      tabId: globalObjects.indexNavigation.myCourses.id,
     });
   } else return res.redirect("/api/course");
 };
