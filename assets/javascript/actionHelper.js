@@ -80,7 +80,7 @@ function warningBox(title, msg, $true) {
   });
 }
 
-function qrCodeInputBox(title, $true, $false, $body, callback) {
+function qrCodeInputBox(title, $true, $false, $body, classrooms, callback) {
   const $content = `
   <div class='dialog-ovelay'>
   <div class='dialog'>
@@ -100,6 +100,17 @@ function qrCodeInputBox(title, $true, $false, $body, callback) {
   </div>
   </div>`;
   $("body").prepend($content);
+
+  const appendClassrooms = ejs.render(
+    `<% if(classrooms.length > 0){ %>
+        <% for(let i=0; i < classrooms.length; i++){ %>
+          <option value="<%=classrooms[i].latitude%>;<%=classrooms[i].longitude%>"><%=classrooms[i].classroomNumber%></option>
+        <% } %>
+    <% } %>`,
+    {classrooms: classrooms}
+  );
+  $("#classroomNumber").append(appendClassrooms);
+
   $(".doAction").click(function () {
     $("html").css("overflow-y", "visible");
     $(this)
