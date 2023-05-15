@@ -15,6 +15,7 @@ const Category = require("../model/category");
 const Course = require("../model/course");
 const Student = require("../model/student");
 const QRSession = require("../model/qrcodesession");
+const Classroom = require("../model/classroom");
 
 // Helper function import
 const UIMessage = require("../helper/uiMessage");
