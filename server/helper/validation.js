@@ -130,6 +130,16 @@ module.exports.attendanceValidation = function (
       "number.min": "Select repeat number must be greater than or equal to 1",
     }),
   });
+  return inputValidation.validate(obj);
+};
+
+// Validation input for creating new classroom location
+module.exports.classroomValidation = function (obj) {
+  const inputValidation = Joi.object({
+    classroomNumber: Joi.string().required().min(3).max(4),
+    latitude: Joi.number().min(-90).max(90).required(),
+    longitude: Joi.number().min(-180).max(180).required(),
+  });
 
   return inputValidation.validate(obj);
 };
