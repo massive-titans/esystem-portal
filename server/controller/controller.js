@@ -569,6 +569,37 @@ module.exports.addAttendance = async (req, res, next) => {
   } else return res.redirect("/api/course");
 };
 
+// show an form for creating a new class room location
+module.exports.showCreateNewClassLocation = async (req, res, next) => {
+  return res.render("addGeolocation", {
+    userInfos: req.user,
+    navMenu: globalObjects.indexNavigation,
+    tabId: globalObjects.indexNavigation.siteAdmin.id,
+  });
+};
+
+// create new classroom
+module.exports.createNewClassLocation = async (req, res, next) => {
+  const {error} = validation.classroomValidation(req.body);
+  if (error)
+    return res
+      .status(400)
+      .render("addGeolocation", {alert: error.details[0].message});
+
+  const classroom = new Classroom(
+    _.pick(req.body, ["classroomNumber", "latitude", "longitude"])
+  );
+  await classroom.save();
+
+  return res.status(200).redirect(`/api/courses/my_courses`);
+};
+
+// get all created classroom
+module.exports.getCreatedClassroom = async (req, res, next) => {
+  const classrooms = await Classroom.find();
+  return res.status(200).send({classrooms});
+};
+
 // Start Mobile RESTful API
 module.exports.mobileUserLogin = async (req, res, next) => {
   const userId = req.user.id;
